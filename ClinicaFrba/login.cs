@@ -24,8 +24,34 @@ namespace ClinicaFrba
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbmRol.Rolppal test = new AbmRol.Rolppal();
-            test.ShowDialog();
+
+            if (Usuario.TextLength > 0 && Contrasenia.TextLength > 0)
+            {
+
+
+               roles selecionRolview = new roles();
+
+
+                // antes de ingresar a la pantalla verificar si existe el usuario
+                
+                selecionRolview.Show();
+                this.Hide();
+                
+                
+
+            }
+            else
+                MessageBox.Show("Complete todos los campos");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs usuario)
+        {
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs contraseña)
+        {
+
         }
     }
 }

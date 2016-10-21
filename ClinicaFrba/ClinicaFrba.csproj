@@ -122,6 +122,18 @@
     <Compile Include="Compra Bono\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="roles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="roles.Designer.cs">
+      <DependentUpon>roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPpal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPpal.Designer.cs">
+      <DependentUpon>MenuPpal.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,9 @@
     <EmbeddedResource Include="AbmRol\Rolppal.resx">
       <DependentUpon>Rolppal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MenuPpal.resx">
+      <DependentUpon>MenuPpal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -180,6 +195,9 @@
     </Compile>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="roles.resx">
+      <DependentUpon>roles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClinicaFrba_ClaveTemporal.pfx" />
     <None Include="Properties\Settings.settings">
