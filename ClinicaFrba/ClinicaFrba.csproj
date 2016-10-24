@@ -170,6 +170,18 @@
     <Compile Include="Pedir Turno\PedirTurnoABM.Designer.cs">
       <DependentUpon>PedirTurnoABM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pedir Turno\Pedir Turno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\Pedir Turno.Designer.cs">
+      <DependentUpon>Pedir Turno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedir Turno\ElegirHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\ElegirHorario.Designer.cs">
+      <DependentUpon>ElegirHorario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrar Agenta Medico\AgendaMedicoABM.cs">
@@ -210,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuProfesional.resx">
       <DependentUpon>MenuProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\Pedir Turno.resx">
+      <DependentUpon>Pedir Turno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

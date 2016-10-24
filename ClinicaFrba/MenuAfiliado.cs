@@ -31,7 +31,7 @@ namespace ClinicaFrba
 
         private void pedirTurnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pedir_Turno.PedirTurnoABM pedirTurnoAbm = new Pedir_Turno.PedirTurnoABM();
+            Pedir_Turno.PedirTurno pedirTurnoAbm = new Pedir_Turno.PedirTurno();
             pedirTurnoAbm.MdiParent = this;
             pedirTurnoAbm.Show();
         }

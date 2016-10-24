@@ -39,7 +39,14 @@ C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTH
 C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.exe.manifest
 C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.application
 C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuPpal.resources
+<<<<<<< Updated upstream
 C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.SeleccionRol.resources
 C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuAfiliado.resources
 C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuAdminsitrativo.resources
 C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuProfesional.resources
+=======
+C:\Users\elturko\Documents\Gestion de Datos\Aplicacion Desktop\ClinicaFrba\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.roles.resources
+C:\Users\facundo.e.borda\Documents\Facu\UTN\Gestion de Datos\GIT\ANOTHER_CAT_GDD\ClinicaFrba\bin\Debug\ClinicaFrba.exe.config
+C:\Users\facundo.e.borda\Documents\Facu\UTN\Gestion de Datos\GIT\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.exe
+C:\Users\facundo.e.borda\Documents\Facu\UTN\Gestion de Datos\GIT\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
+>>>>>>> Stashed changes
