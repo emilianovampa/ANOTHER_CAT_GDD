@@ -29,7 +29,7 @@ namespace ClinicaFrba
             {
 
 
-               roles selecionRolview = new roles();
+               SeleccionRol selecionRolview = new SeleccionRol();
 
 
                 // antes de ingresar a la pantalla verificar si existe el usuario
@@ -52,6 +52,11 @@ namespace ClinicaFrba
         private void textBox2_TextChanged(object sender, EventArgs contraseña)
         {
 
+        }
+
+        private void Salir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

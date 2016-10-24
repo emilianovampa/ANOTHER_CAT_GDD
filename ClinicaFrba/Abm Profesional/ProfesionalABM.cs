@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Abm_Profesional
 {
-    public partial class Form1 : Form
+    public partial class ProfesionalABM : Form
     {
-        public Form1()
+        public ProfesionalABM()
         {
             InitializeComponent();
         }

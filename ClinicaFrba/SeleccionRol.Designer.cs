@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba
 {
-    partial class roles
+    partial class SeleccionRol
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Seleccionar Rol";
             // 
-            // roles
+            // SeleccionRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,8 +68,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.ingresarRol);
-            this.Name = "roles";
+            this.Name = "SeleccionRol";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SeleccionRol_FormClosed);
             this.Load += new System.EventHandler(this.roles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

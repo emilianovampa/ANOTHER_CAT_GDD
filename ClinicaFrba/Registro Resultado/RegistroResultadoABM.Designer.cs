@@ -1,6 +1,6 @@
-﻿namespace ClinicaFrba.Pedir_Turno
+﻿namespace ClinicaFrba.Registro_Resultado
 {
-    partial class Form1
+    partial class RegistroResultadoABM
     {
         /// <summary>
         /// Required designer variable.

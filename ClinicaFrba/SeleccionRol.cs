@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba
 {
-    public partial class roles : Form
+    public partial class SeleccionRol : Form
     {
-        public roles()
+        public SeleccionRol()
         {
             InitializeComponent();
         }
@@ -29,7 +29,14 @@ namespace ClinicaFrba
 
         private void ingresarRol_Click_1(object sender, EventArgs e)
         {
+            MenuPpal menuPpal = new MenuPpal();
+            this.Hide();
+            menuPpal.Show();
+        }
 
+        private void SeleccionRol_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
