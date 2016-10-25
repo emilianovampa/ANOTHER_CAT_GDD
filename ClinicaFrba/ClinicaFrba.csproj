@@ -164,6 +164,12 @@
     <Compile Include="Listados\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pedir Turno\PedirTurnoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\PedirTurnoABM.Designer.cs">
+      <DependentUpon>PedirTurnoABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pedir Turno\Pedir Turno.cs">
       <SubType>Form</SubType>
     </Compile>
