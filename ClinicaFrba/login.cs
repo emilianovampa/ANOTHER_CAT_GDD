@@ -29,21 +29,24 @@ namespace ClinicaFrba
             {
 
 
-               SeleccionRol selecionRolview = new SeleccionRol();
+                SeleccionRol selecionRolview = new SeleccionRol();
 
 
                 // antes de ingresar a la pantalla verificar si existe el usuario
-                
+
                 selecionRolview.Show();
                 this.Hide();
-                
-                
+
+
 
             }
             else
-                MessageBox.Show("Complete todos los campos.");
-        }
+            {
+                MessageBox.Show("Complete todos los campos.", "Advertencia", MessageBoxButtons.OK);
+                Usuario.Focus();
 
+            }
+        }
         private void textBox1_TextChanged(object sender, EventArgs usuario)
         {
             
@@ -56,7 +59,7 @@ namespace ClinicaFrba
 
         private void Salir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void login_Load(object sender, EventArgs e)

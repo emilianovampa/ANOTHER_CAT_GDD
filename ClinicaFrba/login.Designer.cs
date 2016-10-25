@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.Iniciar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Usuario = new System.Windows.Forms.TextBox();
             this.Contrasenia = new System.Windows.Forms.TextBox();
-            this.Salir = new System.Windows.Forms.Button();
+            this.Cancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // Iniciar
             // 
-            this.button1.Location = new System.Drawing.Point(33, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Iniciar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Iniciar.Location = new System.Drawing.Point(33, 161);
+            this.Iniciar.Name = "Iniciar";
+            this.Iniciar.Size = new System.Drawing.Size(95, 23);
+            this.Iniciar.TabIndex = 0;
+            this.Iniciar.Text = "Iniciar";
+            this.Iniciar.UseVisualStyleBackColor = true;
+            this.Iniciar.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -59,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 95);
+            this.label2.Location = new System.Drawing.Point(30, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 2;
@@ -77,19 +77,20 @@
             // 
             this.Contrasenia.Location = new System.Drawing.Point(112, 92);
             this.Contrasenia.Name = "Contrasenia";
+            this.Contrasenia.PasswordChar = '*';
             this.Contrasenia.Size = new System.Drawing.Size(100, 20);
             this.Contrasenia.TabIndex = 4;
             this.Contrasenia.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // Salir
+            // Cancelar
             // 
-            this.Salir.Location = new System.Drawing.Point(149, 161);
-            this.Salir.Name = "Salir";
-            this.Salir.Size = new System.Drawing.Size(97, 23);
-            this.Salir.TabIndex = 5;
-            this.Salir.Text = "Cancelar";
-            this.Salir.UseVisualStyleBackColor = true;
-            this.Salir.Click += new System.EventHandler(this.Salir_Click);
+            this.Cancelar.Location = new System.Drawing.Point(149, 161);
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.Size = new System.Drawing.Size(97, 23);
+            this.Cancelar.TabIndex = 5;
+            this.Cancelar.Text = "Cancelar";
+            this.Cancelar.UseVisualStyleBackColor = true;
+            this.Cancelar.Click += new System.EventHandler(this.Salir_Click);
             // 
             // login
             // 
@@ -98,12 +99,12 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(284, 223);
             this.ControlBox = false;
-            this.Controls.Add(this.Salir);
+            this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.Contrasenia);
             this.Controls.Add(this.Usuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Iniciar);
             this.Name = "login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -115,12 +116,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Iniciar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Usuario;
         private System.Windows.Forms.TextBox Contrasenia;
-        private System.Windows.Forms.Button Salir;
+        private System.Windows.Forms.Button Cancelar;
     }
 }
 
