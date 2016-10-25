@@ -38,18 +38,18 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(15, 161);
+            this.button1.Location = new System.Drawing.Point(33, 161);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(95, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Ingresar";
+            this.button1.Text = "Iniciar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 65);
+            this.label1.Location = new System.Drawing.Point(30, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 1;
@@ -59,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 117);
+            this.label2.Location = new System.Drawing.Point(12, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             // Usuario
             // 
-            this.Usuario.Location = new System.Drawing.Point(88, 65);
+            this.Usuario.Location = new System.Drawing.Point(112, 48);
             this.Usuario.Name = "Usuario";
             this.Usuario.Size = new System.Drawing.Size(100, 20);
             this.Usuario.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             // Contrasenia
             // 
-            this.Contrasenia.Location = new System.Drawing.Point(88, 114);
+            this.Contrasenia.Location = new System.Drawing.Point(112, 92);
             this.Contrasenia.Name = "Contrasenia";
             this.Contrasenia.Size = new System.Drawing.Size(100, 20);
             this.Contrasenia.TabIndex = 4;
@@ -83,11 +83,11 @@
             // 
             // Salir
             // 
-            this.Salir.Location = new System.Drawing.Point(112, 161);
+            this.Salir.Location = new System.Drawing.Point(149, 161);
             this.Salir.Name = "Salir";
-            this.Salir.Size = new System.Drawing.Size(75, 23);
+            this.Salir.Size = new System.Drawing.Size(97, 23);
             this.Salir.TabIndex = 5;
-            this.Salir.Text = "Salir";
+            this.Salir.Text = "Cancelar";
             this.Salir.UseVisualStyleBackColor = true;
             this.Salir.Click += new System.EventHandler(this.Salir_Click);
             // 
@@ -95,7 +95,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(284, 223);
+            this.ControlBox = false;
             this.Controls.Add(this.Salir);
             this.Controls.Add(this.Contrasenia);
             this.Controls.Add(this.Usuario);
@@ -103,7 +105,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "login";
-            this.Text = "login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Login";
+            this.Load += new System.EventHandler(this.login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

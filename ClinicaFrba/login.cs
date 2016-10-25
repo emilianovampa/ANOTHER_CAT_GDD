@@ -24,7 +24,7 @@ namespace ClinicaFrba
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //Verifico que se ingresen datos en los campos
             if (Usuario.TextLength > 0 && Contrasenia.TextLength > 0)
             {
 
@@ -41,7 +41,7 @@ namespace ClinicaFrba
 
             }
             else
-                MessageBox.Show("Complete todos los campos");
+                MessageBox.Show("Complete todos los campos.");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs usuario)
@@ -57,6 +57,11 @@ namespace ClinicaFrba
         private void Salir_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
