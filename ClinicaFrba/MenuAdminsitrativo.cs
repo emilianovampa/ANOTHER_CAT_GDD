@@ -38,7 +38,7 @@ namespace ClinicaFrba
 
         private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Abm_Afiliado.Afiliado afiliadoAbm = new Abm_Afiliado.Afiliado();
+            Abm_Afiliado.AltaAfiliado afiliadoAbm = new Abm_Afiliado.AltaAfiliado();
             afiliadoAbm.MdiParent = this;
             afiliadoAbm.Show();
         }
