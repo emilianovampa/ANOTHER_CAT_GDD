@@ -92,16 +92,22 @@ namespace ClinicaFrba.Abm_Afiliado
                 respuesta = MessageBox.Show("¿Desea afiliar compañero/a?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (respuesta == DialogResult.Yes)
                 { //Si agrego al conyuge, aumento el finLegajo para que termine en 2
-                    finLegajo++;
+                    finLegajo++;  //Pasa a ser 2
                     Abm_Afiliado.AltaAfiliado conyuge = new Abm_Afiliado.AltaAfiliado();
-                    conyuge.ShowDialog(this);
+                    conyuge.ShowDialog();
                     //Verifico si ademas posee familiares a cargo y si es asi, voy a aumentar cada vez que acepte afiliar a uno
                     if (cantidadFamiliares != 0)
                     {
                         respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         while (cantidadFamiliares > 0)
                         {
-                            preguntarPorFamiliares(respuesta);
+                            if (respuesta == DialogResult.Yes)
+                            {
+                                Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
+                                finLegajo++;
+                                familiar.ShowDialog();
+
+                            }
                             cantidadFamiliares--;
 
                         }
@@ -123,7 +129,13 @@ namespace ClinicaFrba.Abm_Afiliado
                         respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         while (cantidadFamiliares > 0)
                         {
-                            preguntarPorFamiliares(respuesta);
+                            if (respuesta == DialogResult.Yes)
+                            {
+                                Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
+                                finLegajo++;
+                                familiar.ShowDialog();
+
+                            }
                             cantidadFamiliares--;
 
                         }
@@ -148,7 +160,13 @@ namespace ClinicaFrba.Abm_Afiliado
                        respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                        while (cantidadFamiliares > 0)
                        {
-                           preguntarPorFamiliares(respuesta);
+                           if (respuesta == DialogResult.Yes)
+                           {
+                               Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
+                               finLegajo++;
+                               familiar.ShowDialog();
+
+                           }
                            cantidadFamiliares--;
 
                        }
@@ -168,17 +186,6 @@ namespace ClinicaFrba.Abm_Afiliado
             
         }
 
-        private void preguntarPorFamiliares(DialogResult respuesta)
-        {
-            if (respuesta == DialogResult.Yes)
-            {
-                Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
-                finLegajo++;
-                familiar.ShowDialog();
-
-            }
-        
-        }
 
         private void guardarAfiliado()
         {
@@ -186,14 +193,9 @@ namespace ClinicaFrba.Abm_Afiliado
             string legajo = inicioLegajo.ToString() + "0" + finLegajo.ToString();
             //Guardar en la base de datos armando la consulta con el codigo de afiliado
             MessageBox.Show("¡Ehnorabuena, se ha añadido un nuevo afiliado! "+ "Legajo: "+ legajo, "¡Congratulations!", MessageBoxButtons.OK);
-            if (finLegajo != 1)
-            {
-                this.Hide();
-            }
-            else
-            {
-                this.Close();
-            }
+           
+           this.Close();
+            
         }
     }
 }

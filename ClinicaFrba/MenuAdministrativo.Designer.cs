@@ -109,9 +109,8 @@
             this.modificarAfiliadoToolStripMenuItem,
             this.eliminarAfiliadoToolStripMenuItem});
             this.afiliadoToolStripMenuItem.Name = "afiliadoToolStripMenuItem";
-            this.afiliadoToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.afiliadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.afiliadoToolStripMenuItem.Text = "Afiliado";
-            this.afiliadoToolStripMenuItem.Click += new System.EventHandler(this.afiliadoToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -135,7 +134,7 @@
             // profesionalToolStripMenuItem
             // 
             this.profesionalToolStripMenuItem.Name = "profesionalToolStripMenuItem";
-            this.profesionalToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.profesionalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.profesionalToolStripMenuItem.Text = "Profesional";
             this.profesionalToolStripMenuItem.Click += new System.EventHandler(this.profesionalToolStripMenuItem_Click);
             // 
