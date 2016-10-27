@@ -56,8 +56,8 @@ namespace ClinicaFrba
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Abm_Afiliado.AltaAfiliado nuevoAfiliado = new Abm_Afiliado.AltaAfiliado();
+        { //Solo permitido cargar de a un solo afiliado principal, una vez terminado se puede agregar otro
+            Abm_Afiliado.AltaAfiliado nuevoAfiliado = Abm_Afiliado.AltaAfiliado.getInstance();
             //Genero el ultimo indice del afiliado
             Abm_Afiliado.AltaAfiliado.finLegajo = 1;
             Random aleatorio = new Random();

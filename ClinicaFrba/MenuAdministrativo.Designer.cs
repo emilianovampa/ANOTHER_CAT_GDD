@@ -148,6 +148,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MenuAdministrativo";
             this.Text = "MenuAdminsitrativo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuAdministrativo_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuAdministrativo_FormClosed);
             this.Load += new System.EventHandler(this.MenuAdministrativo_Load);

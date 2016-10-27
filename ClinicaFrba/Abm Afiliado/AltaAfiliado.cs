@@ -15,6 +15,16 @@ namespace ClinicaFrba.Abm_Afiliado
 
         public static int finLegajo;
         public static  int inicioLegajo;
+        private static Abm_Afiliado.AltaAfiliado _instancia;
+
+        public static Abm_Afiliado.AltaAfiliado getInstance()
+        {
+            if(_instancia==null)
+            {
+                _instancia=new Abm_Afiliado.AltaAfiliado();
+            }
+            return _instancia;
+        }
         
 
         public AltaAfiliado()
@@ -72,7 +82,15 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void AltaAfiliado_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Owner.Show();
+            if (finLegajo == 1)
+            {
+                _instancia = null;
+                this.Owner.Show();
+            }
+            else
+            {
+                getInstance();
+            }
 
         }
 
@@ -82,27 +100,28 @@ namespace ClinicaFrba.Abm_Afiliado
 
             DialogResult respuesta;
             int cantidadFamiliares=int.Parse(FamAF.Text);
-            //Verifico que tenga conyuge o familia a cargo
-                
-            if (EstadoAF.SelectedIndex == 1 || EstadoAF.SelectedIndex == 3 || cantidadFamiliares > 0)
+            //Si es el afiliado principal verifico, sino voy directo a guardarlo.
+            if (finLegajo==1)
             {
-                //Si tiene conyuge, tiene que ser el afiliado principal
-               if ((EstadoAF.SelectedIndex == 1 || EstadoAF.SelectedIndex == 3)&&(finLegajo==1))
+                //Si tiene conyuge
+               if (EstadoAF.SelectedIndex == 1 || EstadoAF.SelectedIndex == 3)
                { 
                 respuesta = MessageBox.Show("¿Desea afiliar compañero/a?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (respuesta == DialogResult.Yes)
                 { //Si agrego al conyuge, aumento el finLegajo para que termine en 2
+                    
                     finLegajo++;  //Pasa a ser 2
                     Abm_Afiliado.AltaAfiliado conyuge = new Abm_Afiliado.AltaAfiliado();
                     conyuge.ShowDialog();
                     //Verifico si ademas posee familiares a cargo y si es asi, voy a aumentar cada vez que acepte afiliar a uno
                     if (cantidadFamiliares != 0)
                     {
-                        respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        while (cantidadFamiliares > 0)
+                         while (cantidadFamiliares > 0)
                         {
+                            respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (respuesta == DialogResult.Yes)
                             {
+                               
                                 Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
                                 finLegajo++;
                                 familiar.ShowDialog();
@@ -114,6 +133,7 @@ namespace ClinicaFrba.Abm_Afiliado
                         //Luego que termino de preguntar por todos los familiares a cargo, recupero el finLegajo en 1 y guardo
                         finLegajo = 1;
                         guardarAfiliado();
+            
                     }
                     else
                     {  //Caso que no tenga ningun familiar a cargo, vuelvo al valor finLegajo en 1
@@ -126,11 +146,12 @@ namespace ClinicaFrba.Abm_Afiliado
                     if (cantidadFamiliares != 0)
                     {
                         finLegajo++;
-                        respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         while (cantidadFamiliares > 0)
                         {
+                            respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (respuesta == DialogResult.Yes)
                             {
+                                
                                 Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
                                 finLegajo++;
                                 familiar.ShowDialog();
@@ -153,13 +174,14 @@ namespace ClinicaFrba.Abm_Afiliado
                }
 
                else
-               {  //Si verifico era el afiliado principal, entonces tenia familiares a cargo.
-                   if (finLegajo==1)
+               {  //Verifico si tiene personas a cargo
+                   if (cantidadFamiliares!=0)
                    {
                        finLegajo++;
-                       respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+      
                        while (cantidadFamiliares > 0)
                        {
+                           respuesta = MessageBox.Show("¿Desea afiliar familiares?", "Atencion!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                            if (respuesta == DialogResult.Yes)
                            {
                                Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
@@ -172,7 +194,7 @@ namespace ClinicaFrba.Abm_Afiliado
                        }
                        finLegajo = 1;
                        guardarAfiliado();
-                   } //Si no era el afiliado principal, entonces no me interesa y guardo como esta.
+                   } //No tiene personas a cargo, guardo
                    else
                    {
                        guardarAfiliado();
@@ -180,7 +202,7 @@ namespace ClinicaFrba.Abm_Afiliado
                }
             }
             else
-            { //Guardo afiliado si no esta en pareja y no tiene familia a cargo.
+            { //Guardo afiliado que no es el principal
                 guardarAfiliado();
             }
             
@@ -193,9 +215,16 @@ namespace ClinicaFrba.Abm_Afiliado
             string legajo = inicioLegajo.ToString() + "0" + finLegajo.ToString();
             //Guardar en la base de datos armando la consulta con el codigo de afiliado
             MessageBox.Show("¡Ehnorabuena, se ha añadido un nuevo afiliado! "+ "Legajo: "+ legajo, "¡Congratulations!", MessageBoxButtons.OK);
-           
-           this.Close();
-            
+
+            if (finLegajo == 1)
+            {
+                this.Owner.Show();
+            }
+            else
+            {
+                getInstance().Show();
+            }
+            this.Close();
         }
     }
 }
