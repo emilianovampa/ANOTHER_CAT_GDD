@@ -46,6 +46,10 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Administrador",
+            "Afiliado",
+            "Profesional"});
             this.comboBox1.Location = new System.Drawing.Point(67, 79);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -69,8 +73,9 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.ingresarRol);
             this.Name = "SeleccionRol";
-            this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SeleccionRol_FormClosed);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Seleccionar Tipo de Usuario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SeleccionRol_FormClosing);
             this.Load += new System.EventHandler(this.roles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

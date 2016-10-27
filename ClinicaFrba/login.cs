@@ -12,14 +12,11 @@ namespace ClinicaFrba
 {
     public partial class login : Form
     {
+        
+
         public login()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,12 +26,12 @@ namespace ClinicaFrba
             {
 
 
-                SeleccionRol selecionRolview = new SeleccionRol();
+               SeleccionRol selecionRolview = new SeleccionRol();
 
 
                 // antes de ingresar a la pantalla verificar si existe el usuario
 
-                selecionRolview.Show();
+                selecionRolview.Show(this);
                 this.Hide();
 
 
@@ -47,24 +44,16 @@ namespace ClinicaFrba
 
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs usuario)
-        {
-            
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs contraseña)
-        {
-
-        }
 
         private void Salir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void login_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }

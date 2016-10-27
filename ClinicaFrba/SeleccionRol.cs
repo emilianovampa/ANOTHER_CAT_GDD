@@ -12,6 +12,8 @@ namespace ClinicaFrba
 {
     public partial class SeleccionRol : Form
     {
+
+
         public SeleccionRol()
         {
             InitializeComponent();
@@ -24,19 +26,40 @@ namespace ClinicaFrba
 
         private void ingresarRol_Click(object sender, EventArgs e)
         {
+            
 
         }
 
         private void ingresarRol_Click_1(object sender, EventArgs e)
         {
-            MenuPpal menuPpal = new MenuPpal();
+            string rol = comboBox1.Text;
+           // MenuPpal menuPpal = new MenuPpal();
+            
+            switch (rol)
+            {
+                case "Administrador": MenuAdministrativo menuAdm = new MenuAdministrativo();
+                    menuAdm.Show(this);
+                    break;
+                case "Afiliado": MenuAfiliado menuAfi = new MenuAfiliado();
+                    menuAfi.Show(this);
+                    break;
+                case "Profesional": MenuProfesional menuProf = new MenuProfesional();
+                    menuProf.Show(this);
+                    break;
+            }
             this.Hide();
-            menuPpal.Show();
+           // menuPpal.Show();
         }
 
         private void SeleccionRol_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+          
+        }
+
+        private void SeleccionRol_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
+          
         }
     }
 }

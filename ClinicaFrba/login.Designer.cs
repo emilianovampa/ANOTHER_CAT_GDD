@@ -54,7 +54,6 @@
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Usuario";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -71,7 +70,6 @@
             this.Usuario.Name = "Usuario";
             this.Usuario.Size = new System.Drawing.Size(100, 20);
             this.Usuario.TabIndex = 3;
-            this.Usuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Contrasenia
             // 
@@ -80,7 +78,6 @@
             this.Contrasenia.PasswordChar = '*';
             this.Contrasenia.Size = new System.Drawing.Size(100, 20);
             this.Contrasenia.TabIndex = 4;
-            this.Contrasenia.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // Cancelar
             // 
