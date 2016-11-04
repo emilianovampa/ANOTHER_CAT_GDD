@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
+using System.Data;
+
 
 namespace ClinicaFrba
 {
@@ -20,13 +24,21 @@ namespace ClinicaFrba
         }
 
         private void button1_Click(object sender, EventArgs e)
+            
         {
+          
             //Verifico que se ingresen datos en los campos
+
+
             if (Usuario.TextLength > 0 && Contrasenia.TextLength > 0)
             {
 
+                string CMD = string.Format("SELECT * FROM tl_Usuario where Username = {0}", Usuario.Text.Trim());
+
+                DataSet ds = Conexion.Ejecutar(CMD);
 
                SeleccionRol selecionRolview = new SeleccionRol();
+
 
 
                 // antes de ingresar a la pantalla verificar si existe el usuario

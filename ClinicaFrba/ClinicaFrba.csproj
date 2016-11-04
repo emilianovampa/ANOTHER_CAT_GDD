@@ -74,11 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abm Afiliado\Afiliado.cs">
+    <Compile Include="Abm Afiliado\AltaAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Afiliado\Afiliado.Designer.cs">
-      <DependentUpon>Afiliado.cs</DependentUpon>
+    <Compile Include="Abm Afiliado\AltaAfiliado.Designer.cs">
+      <DependentUpon>AltaAfiliado.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Especialidades Medicas\Form1.cs">
       <SubType>Form</SubType>
@@ -110,23 +110,18 @@
     <Compile Include="AbmRol\Rolppal.Designer.cs">
       <DependentUpon>Rolppal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Atencion\CancelarAtencionABM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cancelar Atencion\CancelarAtencionABM.Designer.cs">
-      <DependentUpon>CancelarAtencionABM.cs</DependentUpon>
-    </Compile>
     <Compile Include="Compra Bono\ComprarBono.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Compra Bono\ComprarBono.Designer.cs">
       <DependentUpon>ComprarBono.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuAdminsitrativo.cs">
+    <Compile Include="Conexion.cs" />
+    <Compile Include="MenuAdministrativo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuAdminsitrativo.Designer.cs">
-      <DependentUpon>MenuAdminsitrativo.cs</DependentUpon>
+    <Compile Include="MenuAdministrativo.Designer.cs">
+      <DependentUpon>MenuAdministrativo.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuAfiliado.cs">
       <SubType>Form</SubType>
@@ -164,12 +159,6 @@
     <Compile Include="Listados\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pedir Turno\PedirTurnoABM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pedir Turno\PedirTurnoABM.Designer.cs">
-      <DependentUpon>PedirTurnoABM.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pedir Turno\Pedir Turno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,8 +191,8 @@
     <Compile Include="Registro Resultado\RegistroResultadoABM.Designer.cs">
       <DependentUpon>RegistroResultadoABM.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Abm Afiliado\Afiliado.resx">
-      <DependentUpon>Afiliado.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
+      <DependentUpon>AltaAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\DatosRol.resx">
       <DependentUpon>DatosRol.cs</DependentUpon>
@@ -211,8 +200,8 @@
     <EmbeddedResource Include="AbmRol\Rolppal.resx">
       <DependentUpon>Rolppal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuAdminsitrativo.resx">
-      <DependentUpon>MenuAdminsitrativo.cs</DependentUpon>
+    <EmbeddedResource Include="MenuAdministrativo.resx">
+      <DependentUpon>MenuAdministrativo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuAfiliado.resx">
       <DependentUpon>MenuAfiliado.cs</DependentUpon>
@@ -271,6 +260,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cancelar Atencion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

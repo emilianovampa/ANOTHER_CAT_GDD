@@ -18,5 +18,10 @@ namespace ClinicaFrba
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new login());
         }
+
+      
+
+        
     }
+    
 }

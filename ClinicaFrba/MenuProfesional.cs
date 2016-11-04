@@ -31,9 +31,9 @@ namespace ClinicaFrba
 
         private void cancelarTurnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cancelar_Atencion.CancelarAtencionAfiliado cancelAtencionAbm = new Cancelar_Atencion.CancelarAtencionAfiliado();
-            cancelAtencionAbm.MdiParent = this;
-            cancelAtencionAbm.Show();
+       //     Cancelar_Atencion.CancelarAtencionAfiliado cancelAtencionAbm = new Cancelar_Atencion.CancelarAtencionAfiliado();
+         //   cancelAtencionAbm.MdiParent = this;
+           // cancelAtencionAbm.Show();
         }
 
         private void agendaToolStripMenuItem_Click(object sender, EventArgs e)

@@ -6,7 +6,7 @@ GO
 
 IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = N'ANOTHER_CAT')
 	BEGIN
-		EXEC sys.sp_executesql N'CREATE SCHEMA [ANOTHERCAT] AUTHORIZATION [gd]'
+		EXEC sys.sp_executesql N'CREATE SCHEMA [ANOTHER_CAT] AUTHORIZATION [gd]'
 		PRINT 'Schema correctamente creado'
 
 	END
