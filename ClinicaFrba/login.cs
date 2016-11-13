@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-using System.Data;
-
 
 namespace ClinicaFrba
 {
@@ -33,20 +31,72 @@ namespace ClinicaFrba
             if (Usuario.TextLength > 0 && Contrasenia.TextLength > 0)
             {
 
-                string CMD = string.Format("SELECT * FROM tl_Usuario where Username = {0}", Usuario.Text.Trim());
+                ////Obtengo la conexion desde la clase "Conexion"
+                //SqlConnection conexionABase = Conexion.ObtenerConexion();
 
-                DataSet ds = Conexion.Ejecutar(CMD);
+                //string CMD = string.Format("SELECT * FROM [GD2C2016].[ANOTHER_CAT].[tl_Usuario] where [Username] = '{0}'", Usuario.Text.Trim());
 
-               SeleccionRol selecionRolview = new SeleccionRol();
-
-
-
-                // antes de ingresar a la pantalla verificar si existe el usuario
-
-                selecionRolview.Show(this);
-                this.Hide();
+                //DataSet ds = Conexion.Ejecutar(CMD);
 
 
+                //Obtengo la conexion desde la clase "Conexion"
+                SqlConnection conexionABase = Conexion.ObtenerConexion();
+
+                //Instancio el objeto Stored Procedure
+                SqlCommand cmdLogin = new SqlCommand("[ANOTHER_CAT].[LOGIN]", conexionABase);
+                cmdLogin.CommandType = CommandType.StoredProcedure;
+
+                //Le agrego los parametros
+                cmdLogin.Parameters.AddWithValue("@auxnombre", Usuario.Text);
+
+                cmdLogin.Parameters.AddWithValue("@auxpass", Password.encriptarPassword(Contrasenia.Text.Trim()));//encriptada
+
+
+                // cmdLogin.Parameters.AddWithValue("@idrol", idRolSeleccionado);
+
+                //Logica para el manejo de un parametro del tipo OUTPUT
+                SqlParameter parametroRetorno = new SqlParameter();
+                parametroRetorno.ParameterName = "@RETORNO";
+                parametroRetorno.DbType = DbType.Int32;
+                parametroRetorno.Direction = ParameterDirection.Output;
+                //Agrego dicho parametro
+                cmdLogin.Parameters.Add(parametroRetorno);
+
+
+                //Ejecuto el comando SP
+                SqlDataReader reader = cmdLogin.ExecuteReader();
+
+                //Obtengo el valor del parametro de tipo OUTPUT del SP
+                string resultadoEjecucion = cmdLogin.Parameters["@RETORNO"].Value.ToString();
+
+                //Cierro la conexion
+                conexionABase.Close();
+
+                //Evaluo el resultado de la ejecucion del SP e informo el resultado
+                //Resultado = 0 ==> Login Correcto
+                //Resultado = 1 ==> Contraseña incorrecta
+                //Resultado = 2 ==> El Usuario está inhabilitado
+                //Resultado = 3 ==> Ingresó mal la clave 3 veces. Se inhabilitó usuario
+                   switch (resultadoEjecucion)
+                {
+                    case "0":
+                        //Esta todo OK. 
+
+                        SeleccionRol selecionRolview = new SeleccionRol();
+                        this.Hide();
+                        selecionRolview.Show(this);
+                       // this.Close();
+                        break;
+                    case "1":
+                        MessageBox.Show("Contraseña Incorrecta");
+                        break;
+                    case "2":
+                        MessageBox.Show("Su Usuario está inhabilitado. Contactar Administrador");
+                        break;
+                    case "3":
+                        MessageBox.Show("Usted ha sido inhabilitado. Ingresó mal la clave 3 veces");
+                        break;
+                }
 
             }
             else

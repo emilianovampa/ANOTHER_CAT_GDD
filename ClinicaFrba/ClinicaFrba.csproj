@@ -135,6 +135,7 @@
     <Compile Include="MenuProfesional.Designer.cs">
       <DependentUpon>MenuProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Password.cs" />
     <Compile Include="SeleccionRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,10 +180,10 @@
     <Compile Include="Registrar Agenta Medico\AgendaMedicoABM.Designer.cs">
       <DependentUpon>AgendaMedicoABM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Llegada\RegistroLlegadaABM.cs">
+    <Compile Include="Registrar Agenta Medico\Registro Llegada\RegistroLlegadaABM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Llegada\RegistroLlegadaABM.Designer.cs">
+    <Compile Include="Registrar Agenta Medico\Registro Llegada\RegistroLlegadaABM.Designer.cs">
       <DependentUpon>RegistroLlegadaABM.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Resultado\RegistroResultadoABM.cs">
