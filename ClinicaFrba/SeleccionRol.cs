@@ -7,16 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace ClinicaFrba
 {
     public partial class SeleccionRol : Form
     {
 
 
-        public SeleccionRol()
+        public SeleccionRol(Int64 idUsuario)
         {
             InitializeComponent();
+
+            //Obtengo la conexion desde la clase "Conexion"
+            SqlConnection conexionABase = Conexion.ObtenerConexion();
+            string CMD = string.Format("SELECT r.ID_Rol AS Id_Rol, r.Nombre AS Rol from [ANOTHER_CAT].tl_Usuario_Rol as ur join [GD2C2016].[ANOTHER_CAT].tl_rol as R on ur.ID_Rol = r.ID_Rol where ur.ID_Usuario='{0}'", idUsuario);
+            SqlCommand comandoLlenado = new SqlCommand(CMD, conexionABase);
+            SqlDataAdapter adapter = new SqlDataAdapter(comandoLlenado);
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+            comboRol.DataSource = dt;
+            comboRol.DisplayMember = "Rol";
+            comboRol.ValueMember = "Rol";
+
         }
 
         private void roles_Load(object sender, EventArgs e)
@@ -32,12 +45,15 @@ namespace ClinicaFrba
 
         private void ingresarRol_Click_1(object sender, EventArgs e)
         {
-            string rol = comboBox1.Text;
+
+            //int idRolSeleccionado = Convert.ToInt32(comboRol.SelectedValue);
+            //string rol = comboRol.Text;
+            string rol = comboRol.SelectedValue.ToString();
            // MenuPpal menuPpal = new MenuPpal();
             
             switch (rol)
             {
-                case "Administrador": MenuAdministrativo menuAdm = new MenuAdministrativo();
+                case "Administrativo": MenuAdministrativo menuAdm = new MenuAdministrativo();
                     menuAdm.Show(this);
                     break;
                 case "Afiliado": MenuAfiliado menuAfi = new MenuAfiliado();
@@ -46,6 +62,9 @@ namespace ClinicaFrba
                 case "Profesional": MenuProfesional menuProf = new MenuProfesional();
                     menuProf.Show(this);
                     break;
+                case "Administrador":
+                    break;
+
             }
             this.Hide();
            // menuPpal.Show();
@@ -60,6 +79,11 @@ namespace ClinicaFrba
         {
             this.Owner.Show();
           
+        }
+
+        private void comboRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

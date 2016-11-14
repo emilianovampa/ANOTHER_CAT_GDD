@@ -61,6 +61,14 @@ namespace ClinicaFrba
                 parametroRetorno.Direction = ParameterDirection.Output;
                 //Agrego dicho parametro
                 cmdLogin.Parameters.Add(parametroRetorno);
+                //Logica para el manejo de un parametro del tipo OUTPUT idUsuario
+                SqlParameter idUsuario = new SqlParameter();
+                idUsuario.ParameterName = "@IDUSUARIO";
+                idUsuario.DbType = DbType.Int64;
+                idUsuario.Direction = ParameterDirection.Output;
+                //Agrego dicho parametro
+                cmdLogin.Parameters.Add(idUsuario);
+               
 
 
                 //Ejecuto el comando SP
@@ -68,6 +76,7 @@ namespace ClinicaFrba
 
                 //Obtengo el valor del parametro de tipo OUTPUT del SP
                 string resultadoEjecucion = cmdLogin.Parameters["@RETORNO"].Value.ToString();
+                Int64 idUser = Int64.Parse(cmdLogin.Parameters["@IDUSUARIO"].Value.ToString());
 
                 //Cierro la conexion
                 conexionABase.Close();
@@ -82,7 +91,7 @@ namespace ClinicaFrba
                     case "0":
                         //Esta todo OK. 
 
-                        SeleccionRol selecionRolview = new SeleccionRol();
+                        SeleccionRol selecionRolview = new SeleccionRol(idUser);
                         this.Hide();
                         selecionRolview.Show(this);
                        // this.Close();

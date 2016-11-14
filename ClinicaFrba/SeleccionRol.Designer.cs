@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.ingresarRol = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboRol = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -43,17 +43,18 @@
             this.ingresarRol.UseVisualStyleBackColor = true;
             this.ingresarRol.Click += new System.EventHandler(this.ingresarRol_Click_1);
             // 
-            // comboBox1
+            // comboRol
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboRol.FormattingEnabled = true;
+            this.comboRol.Items.AddRange(new object[] {
             "Administrador",
             "Afiliado",
             "Profesional"});
-            this.comboBox1.Location = new System.Drawing.Point(67, 79);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.comboRol.Location = new System.Drawing.Point(67, 79);
+            this.comboRol.Name = "comboRol";
+            this.comboRol.Size = new System.Drawing.Size(121, 21);
+            this.comboRol.TabIndex = 1;
+            this.comboRol.SelectedIndexChanged += new System.EventHandler(this.comboRol_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -70,7 +71,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboRol);
             this.Controls.Add(this.ingresarRol);
             this.Name = "SeleccionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -85,7 +86,7 @@
         #endregion
 
         private System.Windows.Forms.Button ingresarRol;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboRol;
         private System.Windows.Forms.Label label1;
 
     }
