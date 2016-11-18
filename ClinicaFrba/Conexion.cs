@@ -58,5 +58,20 @@ namespace ClinicaFrba
 
         }
 
+         public static void loadDataGrid(string query, DataGridView dgv)
+        {
+            using (SqlConnection conexion = Conexion.ObtenerConexion())
+            {
+                SqlCommand comando = new SqlCommand(query, conexion);
+                DataTable dataTable = new DataTable();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
+                dataAdapter.Fill(dataTable);
+                BindingSource bSource = new BindingSource();
+                bSource.DataSource = dataTable;
+                dgv.DataSource = bSource;
+                dgv.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                conexion.Close();
+            }
+
     }
 }
