@@ -31,14 +31,6 @@ namespace ClinicaFrba
             if (Usuario.TextLength > 0 && Contrasenia.TextLength > 0)
             {
 
-                ////Obtengo la conexion desde la clase "Conexion"
-                //SqlConnection conexionABase = Conexion.ObtenerConexion();
-
-                //string CMD = string.Format("SELECT * FROM [GD2C2016].[ANOTHER_CAT].[tl_Usuario] where [Username] = '{0}'", Usuario.Text.Trim());
-
-                //DataSet ds = Conexion.Ejecutar(CMD);
-
-
                 //Obtengo la conexion desde la clase "Conexion"
                 SqlConnection conexionABase = Conexion.ObtenerConexion();
 
@@ -49,26 +41,27 @@ namespace ClinicaFrba
                 //Le agrego los parametros
                 cmdLogin.Parameters.AddWithValue("@auxnombre", Usuario.Text);
 
-                cmdLogin.Parameters.AddWithValue("@auxpass", Password.encriptarPassword(Contrasenia.Text.Trim()));//encriptada
-
-
-                // cmdLogin.Parameters.AddWithValue("@idrol", idRolSeleccionado);
+               //cmdLogin.Parameters.AddWithValue("@auxpass", Password.encriptarPassword(Contrasenia.Text).Trim());//encriptada
+             cmdLogin.Parameters.AddWithValue("@auxpass", Contrasenia.Text.Trim().ToString());
 
                 //Logica para el manejo de un parametro del tipo OUTPUT
                 SqlParameter parametroRetorno = new SqlParameter();
                 parametroRetorno.ParameterName = "@RETORNO";
                 parametroRetorno.DbType = DbType.Int32;
                 parametroRetorno.Direction = ParameterDirection.Output;
+
                 //Agrego dicho parametro
                 cmdLogin.Parameters.Add(parametroRetorno);
+
                 //Logica para el manejo de un parametro del tipo OUTPUT idUsuario
                 SqlParameter idUsuario = new SqlParameter();
                 idUsuario.ParameterName = "@IDUSUARIO";
                 idUsuario.DbType = DbType.Int64;
                 idUsuario.Direction = ParameterDirection.Output;
+
                 //Agrego dicho parametro
                 cmdLogin.Parameters.Add(idUsuario);
-               
+          
 
 
                 //Ejecuto el comando SP

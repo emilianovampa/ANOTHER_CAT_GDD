@@ -26,9 +26,11 @@ namespace ClinicaFrba
             DataTable dt = new DataTable();
 
             adapter.Fill(dt);
-            comboRol.DataSource = dt;
+           comboRol.DataSource = dt;
             comboRol.DisplayMember = "Rol";
             comboRol.ValueMember = "Rol";
+           // MenuAdministrativo menuAdm2 = new MenuAdministrativo();
+            //menuAdm2.Show(this);
 
         }
 
