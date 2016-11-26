@@ -49,8 +49,7 @@ namespace ClinicaFrba
                 parametroRetorno.ParameterName = "@RETORNO";
                 parametroRetorno.DbType = DbType.Int32;
                 parametroRetorno.Direction = ParameterDirection.Output;
-
-                //Agrego dicho parametro
+                //Agrego los parametros
                 cmdLogin.Parameters.Add(parametroRetorno);
 
                 //Logica para el manejo de un parametro del tipo OUTPUT idUsuario
@@ -58,9 +57,17 @@ namespace ClinicaFrba
                 idUsuario.ParameterName = "@IDUSUARIO";
                 idUsuario.DbType = DbType.Int64;
                 idUsuario.Direction = ParameterDirection.Output;
-
-                //Agrego dicho parametro
+                //Agrego los parametros
                 cmdLogin.Parameters.Add(idUsuario);
+
+                //Logica para el manejo de un parametro del tipo OUTPUT cantidadRoles
+                SqlParameter cantRoles = new SqlParameter();
+                cantRoles.ParameterName = "@CANTROLES";
+                cantRoles.DbType = DbType.Int32;
+                cantRoles.Direction = ParameterDirection.Output;
+
+                //Agrego los parametros
+                 cmdLogin.Parameters.Add(cantRoles);
           
 
 
@@ -70,6 +77,7 @@ namespace ClinicaFrba
                 //Obtengo el valor del parametro de tipo OUTPUT del SP
                 string resultadoEjecucion = cmdLogin.Parameters["@RETORNO"].Value.ToString();
                 Int64 idUser = Int64.Parse(cmdLogin.Parameters["@IDUSUARIO"].Value.ToString());
+                Int32 cantRol = Int32.Parse(cmdLogin.Parameters["@CANTROLES"].Value.ToString());
 
                 //Cierro la conexion
                 conexionABase.Close();
@@ -83,10 +91,41 @@ namespace ClinicaFrba
                 {
                     case "0":
                         //Esta todo OK. 
+                        if (cantRol > 1)
+                        {
+                            SeleccionRol selecionRolview = new SeleccionRol(idUser);
+                            this.Hide();
+                            selecionRolview.Show(this);
+                        }
+                        else
+                        {
+                            conexionABase = Conexion.ObtenerConexion();
+                            string CMD = string.Format("SELECT  r.Nombre  from [ANOTHER_CAT].tl_Usuario_Rol as ur join [GD2C2016].[ANOTHER_CAT].tl_rol as R on ur.ID_Rol = r.ID_Rol where ur.ID_Usuario='{0}'", idUser);
+                            SqlCommand comandoLlenado = new SqlCommand(CMD, conexionABase);
+                            SqlDataReader ReadRol= comandoLlenado.ExecuteReader();
+                            ReadRol.Read();
+                            string rolUsuario = ReadRol[0].ToString();
 
-                        SeleccionRol selecionRolview = new SeleccionRol(idUser);
-                        this.Hide();
-                        selecionRolview.Show(this);
+                            switch (rolUsuario)
+                            {
+                                case "ADMINISTRATIVO": MenuAdministrativo menuAdm = new MenuAdministrativo();
+                                    menuAdm.Show(this);
+                                    break;
+                                case "AFILIADO": MenuAfiliado menuAfi = new MenuAfiliado();
+                                    menuAfi.Show(this);
+                                    break;
+                                case "PROFESIONAL": MenuProfesional menuProf = new MenuProfesional();
+                                    menuProf.Show(this);
+                                    break;
+                                case "ADMINISTRADOR": MenuAdministrativo menuAdm2 = new MenuAdministrativo();
+                                    menuAdm2.Show(this);
+                                    break;
+
+                            }
+                            conexionABase.Close();
+
+                        }
+                       
                        // this.Close();
                         break;
                     case "1":
