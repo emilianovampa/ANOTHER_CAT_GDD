@@ -20,7 +20,7 @@ namespace ClinicaFrba.Pedir_Turno
         private int idAfiliado;
 
         // Esta query busca todos el ID, nombre y apellido de cada profesional ademas de su especialidad y el ID de la misma
-        private string queryDeLoadTable = "SELECT u.Apellido AS Apellido, u.USername AS Nombre, u.ID_Usuario, e.Descripcion AS Especialidad, e.ID_Especialidad FROM [GD2C2016].[ANOTHER_CAT].tl_Usuario u, [GD2C2016].[ANOTHER_CAT].tl_Profesional p, [GD2C2016].[ANOTHER_CAT].tl_Profesional_Especialidad ep, [GD2C2016].[ANOTHER_CAT].tl_Especialidad e WHERE (u.ID_Usuario = p.ID_Usuario) AND (p.ID_Usuario = ep.ID_Usuario) AND (ep.Codigo_Especialidad = e.ID_Especialidad)";
+        private string queryLoadTable = "SELECT u.Apellido AS Apellido, u.USername AS Nombre, u.ID_Usuario, e.Descripcion AS Especialidad, e.ID_Especialidad FROM [GD2C2016].[ANOTHER_CAT].tl_Usuario u, [GD2C2016].[ANOTHER_CAT].tl_Profesional p, [GD2C2016].[ANOTHER_CAT].tl_Profesional_Especialidad ep, [GD2C2016].[ANOTHER_CAT].tl_Especialidad e WHERE (u.ID_Usuario = p.ID_Usuario) AND (p.ID_Usuario = ep.ID_Usuario) AND (ep.Codigo_Especialidad = e.ID_Especialidad)";
 
 
         
@@ -31,7 +31,7 @@ namespace ClinicaFrba.Pedir_Turno
             InitializeComponent();
 
             // Cargo el DataGrid
-            BDComun.loadDataGrid(queryDeLoadTable, dataGridView1);
+            Conexion.loadDataGrid(queryLoadTable, dataGridView1);
 
             // Escondo las columnas de ID, me viene bien tenerlos a mano pero no quiero que el usuario los vea
             dataGridView1.Columns[2].Visible = false;
@@ -42,7 +42,7 @@ namespace ClinicaFrba.Pedir_Turno
         private void button1_Click(object sender, EventArgs e)
         {
             // Query usada para settear el DataGrid
-            string newQuery = this.queryDeLoadTable;
+            string newQuery = this.queryLoadTable;
 
             //strings del textBox
             string nombre = textBox1.Text;
