@@ -15,40 +15,50 @@ namespace ClinicaFrba
         public MenuPpal()
         {
             InitializeComponent();
+
+
+            
         }
 
-        public void button4_Click(object sender, EventArgs e)
+        private void comprarBonoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Compra_Bono.ComprarBono comprarBonoABM = new Compra_Bono.ComprarBono();
+            comprarBonoABM.MdiParent = this;
+            comprarBonoABM.Show();
         }
 
-        public void MenuPpal_Load(object sender, EventArgs e)
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pedirTurnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // Pedir_Turno.PedirTurno pedirTurnoAbm = new Pedir_Turno.PedirTurno();
+       //     pedirTurnoAbm.MdiParent = this;
+         //   pedirTurnoAbm.Show();
+        }
+
+        private void cancelarTurnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        //    Cancelar_Atencion.CancelarAtencionAfiliado cancelarTurnoAbm = new Cancelar_Atencion.CancelarAtencionAfiliado();
+          //  cancelarTurnoAbm.MdiParent = this;
+            //cancelarTurnoAbm.Show();
+        }
+
+        private void MenuAfiliado_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void registrarLlegadaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             
-           //Depende el rol, se abre menu
-
-            MenuAfiliado menuAfiliado = new MenuAfiliado();
-            menuAfiliado.Show();
-
-            /*  MenuAdminsitrativo menuAdministrativo = new MenuAdminsitrativo();
-              menuAdministrativo.Show();
-
-              MenuProfesional menuProf = new MenuProfesional();
-              menuProf.Show();
-              */
 
         }
 
-        private void MenuPpal_FormClosing(object sender, FormClosingEventArgs e)
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
 
-      
+        }
     }
 }

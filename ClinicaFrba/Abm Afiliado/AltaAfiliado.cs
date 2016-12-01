@@ -214,6 +214,30 @@ namespace ClinicaFrba.Abm_Afiliado
 
             string legajo = inicioLegajo.ToString() + "0" + finLegajo.ToString();
             //Guardar en la base de datos armando la consulta con el codigo de afiliado
+
+            //var afiliado = new Dictionary<string, object>()
+            //        {
+                   
+            //            { "@Username", txtNombre.Text+txtApellido.Text+txtDni.Text.ToString()},
+            //            { "@Nombre", txtNombre.Text },
+            //            {"@TipoDocumento", tipodni},
+            //            { "@Apellido", txtApellido.Text },
+            //            { "@Dni", Convert.ToInt32(txtDni.Text)  },
+            //            { "@Mail",  txtMail.Text  },
+            //            { "@Telefono", txtTelefono.Text  },
+            //            { "@Direccion",txtDireccion.Text  },
+            //            { "@CantHijos",  0 },
+            //            { "@EstadoCivil", cmbEstadoCivil.Text.Substring(0,1)},
+            //            { "@Fecha", dtpFecha.Value},
+            //            { "@Plan", Convert.ToDecimal(planElegido.Id) },
+            //            { "@Sexo", cmbSexo.Text.Substring(0,1)},
+            //        };
+
+            //if (Alta(afiliado))
+            //{
+            //    Close();
+            //}
+
             MessageBox.Show("¡Ehnorabuena, se ha añadido un nuevo afiliado! "+ "Legajo: "+ legajo, "¡Congratulations!", MessageBoxButtons.OK);
 
             if (finLegajo == 1)
@@ -226,5 +250,23 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             this.Close();
         }
+
+
+        //private bool Alta(Dictionary<string, object> afiliado)
+        //{
+        //    try
+        //    {
+        //        //ConexionesDB.ExecuteNonQuery("Afiliado_Add", afiliado);
+        //        //ConexionesDB.ExecuteNonQuery("Hijos_En_Cero", new Dictionary<string, object> { { "@username", txtNombre.Text + txtApellido.Text + txtDni.Text.ToString() } });
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("No se pudo agregar el afiliado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false;
+        //    }
+
+        //}
     }
+
+
 }

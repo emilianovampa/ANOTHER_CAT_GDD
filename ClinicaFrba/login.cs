@@ -111,7 +111,7 @@ namespace ClinicaFrba
                                 case "ADMINISTRATIVO": MenuAdministrativo menuAdm = new MenuAdministrativo();
                                     menuAdm.Show(this);
                                     break;
-                                case "AFILIADO": MenuAfiliado menuAfi = new MenuAfiliado();
+                                case "AFILIADO": MenuPpal menuAfi = new MenuPpal();
                                     menuAfi.Show(this);
                                     break;
                                 case "PROFESIONAL": MenuProfesional menuProf = new MenuProfesional();

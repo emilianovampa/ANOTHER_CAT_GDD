@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace ClinicaFrba
 {
-    class Conexion
+    public static class Conexion
     {
 
         public static SqlConnection ObtenerConexion()
@@ -74,5 +75,60 @@ namespace ClinicaFrba
             }
 
         }
+
+        //DB: DataBase
+        public static SqlConnection DB;
+        static string conn = ConfigurationManager.AppSettings["connection-string"];
+        //public static DateTime fecha = ConfigTime.getFecha();
+
+        static void ConexionesDB()
+        {
+            DB = new SqlConnection(conn);
+        }
+
+        //SP: StoredProcedure
+        public static void ExecuteNonQuery(string SP, Dictionary<string, object> parametros = null)
+        {
+            if (parametros == null) parametros = new Dictionary<string, object>();
+            if (DB != null && DB.State == ConnectionState.Open)
+            {
+                DB.Close();
+            }
+            DB.Open();
+            SqlCommand command = new SqlCommand("NOT_NULL." + SP, DB);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            foreach (var parametro in parametros)
+            {
+                command.Parameters.Add(new SqlParameter(parametro.Key, parametro.Value));
+            }
+
+            command.ExecuteNonQuery();
+            DB.Close();
+
+
+
+
+        }
+
+
+        public static SqlDataReader ExecuteReader(string SP, Dictionary<string, object> parametros = null)
+        {
+            if (DB != null && DB.State == ConnectionState.Open)
+            {
+                DB.Close();
+            }
+            if (parametros == null) parametros = new Dictionary<string, object>();
+            DB.Open();
+            SqlCommand command = new SqlCommand("NOT_NULL." + SP, DB);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            foreach (var parametro in parametros)
+            {
+                command.Parameters.Add(new SqlParameter(parametro.Key, parametro.Value));
+            }
+            SqlDataReader result = command.ExecuteReader();
+            return result;
+        }
+
     }
+
 }

@@ -63,6 +63,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -135,6 +136,7 @@
     <Compile Include="MenuProfesional.Designer.cs">
       <DependentUpon>MenuProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Afiliado.cs" />
     <Compile Include="Password.cs" />
     <Compile Include="SeleccionRol.cs">
       <SubType>Form</SubType>
