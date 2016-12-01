@@ -3,13 +3,6 @@ GO
 
 
 
-CREATE SEQUENCE ANOTHER_CAT.Per As int START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE ANOTHER_CAT.Afi As int START WITH 100 INCREMENT BY 100;
-CREATE SEQUENCE ANOTHER_CAT.Mat As int START WITH 1 INCREMENT BY 1;
-GO
-
-
-
 -- Verifico si existe el schema, si no existe lo creo
 
 
@@ -22,10 +15,15 @@ IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = N'ANOTHER_CAT')
 GO
 
 
+-- Verificacion secuencias
 
--- Verficicacion de tablas. Si existen las dropeo.
+
+CREATE SEQUENCE ANOTHER_CAT.Afi As int START WITH 100 INCREMENT BY 100;
+CREATE SEQUENCE ANOTHER_CAT.Mat As int START WITH 1 INCREMENT BY 1;
+GO
 
 
+-- Verificacion de tablas. Si existen las dropeo.
 
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ANOTHER_CAT.tl_Turno'))
@@ -108,14 +106,15 @@ IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ANOTHER_CAT.t
 	DROP TABLE ANOTHER_CAT.tl_Usuario
 
 
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ANOTHER_CAT.tl_Persona'))
-	DROP TABLE ANOTHER_CAT.tl_Persona
-
 
 -- Creacion de tablas
 
-CREATE TABLE ANOTHER_CAT.tl_Persona (
-	ID_Persona BIGINT NOT NULL,
+
+CREATE TABLE ANOTHER_CAT.tl_Usuario (
+	ID_Usuario BIGINT IDENTITY(1,1) NOT NULL,
+	Username NVARCHAR(255) NULL,
+	Password NVARCHAR(255) NULL,
+	Login_Fallidos TINYINT NOT NULL DEFAULT 0,
 	Nombre VARCHAR(255) NULL,
 	Apellido VARCHAR(255) NULL,
 	Direccion VARCHAR(255) NULL,
@@ -125,7 +124,8 @@ CREATE TABLE ANOTHER_CAT.tl_Persona (
 	Tipo_Documento VARCHAR(20) NOT NULL DEFAULT 'DNI',
 	Nro_Documento NUMERIC(18,0) NULL,
 	Sexo CHAR(1) NULL,
-		PRIMARY KEY (ID_Persona)
+	Habilitado BIT NOT NULL DEFAULT 1,
+		PRIMARY KEY (ID_Usuario)
 )
 GO
 
@@ -293,16 +293,7 @@ CREATE TABLE ANOTHER_CAT.tl_Rol (
 )
 GO
 
-CREATE TABLE ANOTHER_CAT.tl_Usuario (
-	ID_Usuario BIGINT IDENTITY(1,1) NOT NULL,
-	ID_Persona BIGINT NOT NULL,
-	Username NVARCHAR(255) NOT NULL,
-	Password NVARCHAR(255) NOT NULL,
-	Login_Fallidos TINYINT NOT NULL DEFAULT 0,
-	Habilitado BIT NOT NULL DEFAULT 1,
-		PRIMARY KEY(ID_Usuario)
-)
-GO
+
 
 
 CREATE TABLE ANOTHER_CAT.tl_Usuario_Rol (
@@ -326,8 +317,8 @@ GO
 
 --OK
 ALTER TABLE ANOTHER_CAT.tl_Profesional WITH CHECK ADD
-	CONSTRAINT FK_Profesional_Persona FOREIGN KEY (ID_Profesional)
-	REFERENCES ANOTHER_CAT.tl_Persona (ID_Persona)
+	CONSTRAINT FK_Profesional_Usuario FOREIGN KEY (ID_Profesional)
+	REFERENCES ANOTHER_CAT.tl_Usuario (ID_Usuario)
 
 
 --OK
@@ -351,8 +342,8 @@ ALTER TABLE ANOTHER_CAT.tl_Afiliado WITH CHECK ADD
 
 --OK
 ALTER TABLE ANOTHER_CAT.tl_Afiliado WITH CHECK ADD
-	CONSTRAINT FK_Afiliado_Persona FOREIGN KEY (ID_Afiliado) 
-	REFERENCES ANOTHER_CAT.tl_Persona (ID_Persona)
+	CONSTRAINT FK_Afiliado_Usuario FOREIGN KEY (ID_Afiliado) 
+	REFERENCES ANOTHER_CAT.tl_Usuario (ID_Usuario)
 
 --OK
 ALTER TABLE ANOTHER_CAT.tl_Compra_Bono WITH CHECK ADD
@@ -429,12 +420,6 @@ ALTER TABLE ANOTHER_CAT.tl_Consulta_Medica WITH CHECK ADD
 ALTER TABLE ANOTHER_CAT.tl_Consulta_Medica WITH CHECK ADD
 	CONSTRAINT FK_Consulta_Medica_Turno FOREIGN KEY (ID_Turno)
 	REFERENCES ANOTHER_CAT.tl_Turno (ID_Turno)
-
-
---OK
-ALTER TABLE ANOTHER_CAT.tl_Usuario WITH CHECK ADD
-	CONSTRAINT FK_Usuario_Persona FOREIGN KEY (ID_Persona)
-	REFERENCES ANOTHER_CAT.tl_Persona (ID_Persona)
 
 
 --OK
@@ -552,14 +537,11 @@ VALUES
 
 --Ejemplo usuario administrativo
 
-DECLARE @input as NVARCHAR(max) = 'w23e',;
+DECLARE @input as NVARCHAR(max) = 'w23e';
 
-INSERT INTO ANOTHER_CAT.tl_Persona(ID_Persona, Nombre, Nro_Documento)
-VALUES (NEXT VALUE FOR ANOTHER_CAT.Per, 'ADMINISTRATIVO 1', 32173648);
+INSERT INTO ANOTHER_CAT.tl_Usuario (Nombre, Nro_Documento, Username, Password)
+VALUES ('ADMINISTRATIVO 1', 32173648, 'SEBASTIAN', HASHBYTES('SHA2_256', @input));
 
-
-INSERT INTO ANOTHER_CAT.tl_Usuario(ID_Persona, Username, Password)
-VALUES ((SELECT ID_Persona FROM ANOTHER_CAT.tl_Persona WHERE Nombre = 'ADMINISTRATIVO 1'), 'SEBASTIAN', HASHBYTES('SHA2_256', @input));
 
 SELECT @ID_USUARIO = ID_USUARIO
 FROM ANOTHER_CAT.tl_Usuario
@@ -570,11 +552,8 @@ VALUES (@ID_USUARIO, 1);
 
 --Ejemplo para usuario administrador
 
-INSERT INTO ANOTHER_CAT.tl_Persona(ID_Persona, Nombre)
-VALUES (0, 'ADMINISTRADOR');
-
-INSERT INTO ANOTHER_CAT.tl_Usuario (ID_Persona, Username, Password)
-VALUES (0, 'ADMIN' , HASHBYTES('SHA2_256', @input));
+INSERT INTO ANOTHER_CAT.tl_Usuario(Nombre, Username, Password)
+VALUES ('ADMINISTRADOR', 'ADMIN' , HASHBYTES('SHA2_256', @input));
 
 SELECT @ID_USUARIO = ID_USUARIO
 FROM ANOTHER_CAT.tl_Usuario
@@ -611,18 +590,15 @@ INSERT INTO ANOTHER_CAT.tl_Plan_Medico (ID_Plan_Medico, Descripcion, Precio_Bono
 SELECT DISTINCT (ID_Plan_Medico), Descripcion, Precio_Bono_Consulta, Precio_Bono_Farmacia
 FROM @MIGRACION_AFILIADO;
 
-INSERT INTO ANOTHER_CAT.tl_Persona (ID_Persona, Nombre, Apellido, Direccion, Telefono, Mail, Fecha_Nacimiento, Nro_Documento)
-SELECT (NEXT VALUE FOR ANOTHER_CAT.Per), Nombre, Apellido, Direccion, Telefono, Mail, Fecha_Nacimiento, Nro_Documento
+INSERT INTO ANOTHER_CAT.tl_Usuario (Username,Password,Nombre, Apellido, Direccion, Telefono, Mail, Fecha_Nacimiento, Nro_Documento)
+SELECT 'AFILIADO', HASHBYTES('SHA2_256', @input),Nombre, Apellido, Direccion, Telefono, Mail, Fecha_Nacimiento, Nro_Documento
 FROM @MIGRACION_AFILIADO;
 
 
 INSERT INTO ANOTHER_CAT.tl_Afiliado (Numero_Afiliado, ID_Plan_Medico, ID_Afiliado)
-SELECT ((NEXT VALUE FOR ANOTHER_CAT.Afi)+1), ID_Plan_Medico, (SELECT ID_Persona FROM ANOTHER_CAT.tl_Persona AS P WHERE P.Nro_Documento = MA.Nro_Documento)
+SELECT ((NEXT VALUE FOR ANOTHER_CAT.Afi)+1), ID_Plan_Medico, (SELECT ID_Usuario FROM ANOTHER_CAT.tl_Usuario AS P WHERE P.Nro_Documento = MA.Nro_Documento)
 FROM @MIGRACION_AFILIADO AS MA;
 
-INSERT INTO ANOTHER_CAT.tl_Usuario (ID_Persona, Username, Password)
-SELECT ID_Afiliado, 'AFILIADO', HASHBYTES('SHA2_256', @input)
-FROM ANOTHER_CAT.tl_Afiliado;
 
 INSERT INTO ANOTHER_CAT.tl_Usuario_Rol(ID_Usuario, ID_Rol)
 SELECT ID_Usuario, 3
@@ -649,20 +625,16 @@ WHERE Medico_Dni IS NOT NULL;
 
 
 
-INSERT INTO ANOTHER_CAT.tl_Persona (ID_Persona, Nombre, Apellido, Direccion, Nro_Documento, Telefono, Mail, Fecha_Nacimiento)
-SELECT (NEXT VALUE FOR ANOTHER_CAT.Per), Nombre, Apellido, Direccion, Nro_Documento, Telefono, Mail, Fecha_Nacimiento
+INSERT INTO ANOTHER_CAT.tl_Usuario (Username, Password,Nombre, Apellido, Direccion, Nro_Documento, Telefono, Mail, Fecha_Nacimiento)
+SELECT 'PROFESIONAL', HASHBYTES('SHA2_256', @input), Nombre, Apellido, Direccion, Nro_Documento, Telefono, Mail, Fecha_Nacimiento
 FROM @MIGRACION_PROFESIONAL;
 
 
 
 INSERT INTO ANOTHER_CAT.tl_Profesional (ID_Profesional, Matricula, Horas_Acumuladas)
-SELECT (SELECT ID_Persona FROM ANOTHER_CAT.tl_Persona AS P WHERE P.Nro_Documento = M.Nro_Documento), (NEXT VALUE FOR ANOTHER_CAT.Mat), 0
+SELECT (SELECT ID_Usuario FROM ANOTHER_CAT.tl_Usuario AS P WHERE P.Nro_Documento = M.Nro_Documento), (NEXT VALUE FOR ANOTHER_CAT.Mat), 0
 FROM @MIGRACION_PROFESIONAL AS M;
 
-
-INSERT INTO ANOTHER_CAT.tl_Usuario (ID_Persona, Username, Password)
-SELECT ID_Profesional, 'PROFESIONAL', HASHBYTES('SHA2_256', @input)
-FROM ANOTHER_CAT.tl_Profesional;
 
 
 INSERT INTO ANOTHER_CAT.tl_Usuario_Rol(ID_Usuario, ID_Rol)
@@ -695,7 +667,7 @@ WHERE ID_Tipo_Especialidad IS NOT NULL;
 
 INSERT INTO ANOTHER_CAT.tl_Especialidad_Profesional(ID_Profesional, ID_Especialidad)
 SELECT DISTINCT PR.ID_Profesional, M.Especialidad_Codigo
-FROM ANOTHER_CAT.tl_Persona P JOIN ANOTHER_CAT.tl_Profesional PR ON (P.ID_Persona = PR.ID_Profesional) JOIN gd_esquema.Maestra M ON (P.Nro_Documento = M.Medico_Dni);
+FROM ANOTHER_CAT.tl_Usuario U JOIN ANOTHER_CAT.tl_Profesional PR ON (U.ID_Usuario = PR.ID_Profesional) JOIN gd_esquema.Maestra M ON (U.Nro_Documento = M.Medico_Dni);
 
 
 DECLARE @MIGRACION_CONSULTA TABLE (
@@ -726,8 +698,8 @@ DECLARE @MIGRACION_CONSULTA TABLE (
 
 
 INSERT INTO @MIGRACION_CONSULTA(ID_Afiliado, ID_Profesional, ID_Especialidad, Fecha_Turno, Nro_Turno, Fecha_Compra, Fecha_Impresion, Bono_Numero, Sintomas, Diagnostico)
-SELECT (SELECT ID_Persona FROM ANOTHER_CAT.tl_Persona AS P WHERE P.Nro_Documento = M.Paciente_Dni),
-	   (SELECT ID_Persona FROM ANOTHER_CAT.tl_Persona AS P2 WHERE P2.Nro_Documento = M.Medico_Dni),
+SELECT (SELECT ID_Usuario FROM ANOTHER_CAT.tl_Usuario AS P WHERE P.Nro_Documento = M.Paciente_Dni),
+	   (SELECT ID_Usuario FROM ANOTHER_CAT.tl_Usuario AS P2 WHERE P2.Nro_Documento = M.Medico_Dni),
 	   Especialidad_Codigo, Turno_Fecha, Turno_Numero, Compra_Bono_Fecha, Bono_Consulta_Fecha_Impresion, Bono_Consulta_Numero,Consulta_Sintomas, Consulta_Enfermedades
 FROM gd_esquema.Maestra M;
 
@@ -765,7 +737,7 @@ SET Numero_Consulta_Medica = (SELECT Cantidad FROM @CANTIDAD_CONSULTAS WHERE ID_
 
 
 INSERT INTO ANOTHER_CAT.tl_Agenda (ID_Profesional, Fecha, ID_Especialidad, Inicio, Fin)
-SELECT DISTINCT P.ID_Profesional, Fecha, EP.ID_Especialidad, '2015-01-01', '2015-12-20'
+SELECT DISTINCT P.ID_Profesional, Fecha, EP.ID_Especialidad, '2015-01-01', '2015-12-30'
 FROM ANOTHER_CAT.tl_Profesional AS P JOIN ANOTHER_CAT.tl_Especialidad_Profesional AS EP ON (P.ID_Profesional = EP.ID_Profesional) JOIN
      ANOTHER_CAT.tl_Turno AS T ON (EP.ID_Profesional = T.ID_Profesional);
 
