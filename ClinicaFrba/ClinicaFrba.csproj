@@ -124,11 +124,11 @@
     <Compile Include="MenuAdministrativo.Designer.cs">
       <DependentUpon>MenuAdministrativo.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuAfiliado.cs">
+    <Compile Include="MenuPpal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuAfiliado.Designer.cs">
-      <DependentUpon>MenuAfiliado.cs</DependentUpon>
+    <Compile Include="MenuPpal.Designer.cs">
+      <DependentUpon>MenuPpal.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuProfesional.cs">
       <SubType>Form</SubType>
@@ -137,18 +137,14 @@
       <DependentUpon>MenuProfesional.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\Afiliado.cs" />
+    <Compile Include="Objetos\Class1.cs" />
+    <Compile Include="Objetos\Usuario.cs" />
     <Compile Include="Password.cs" />
     <Compile Include="SeleccionRol.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SeleccionRol.Designer.cs">
       <DependentUpon>SeleccionRol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MenuPpal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MenuPpal.Designer.cs">
-      <DependentUpon>MenuPpal.cs</DependentUpon>
     </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
@@ -205,9 +201,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuAdministrativo.resx">
       <DependentUpon>MenuAdministrativo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuAfiliado.resx">
-      <DependentUpon>MenuAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPpal.resx">
       <DependentUpon>MenuPpal.cs</DependentUpon>
@@ -266,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cancelar Atencion\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

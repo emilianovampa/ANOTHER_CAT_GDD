@@ -12,12 +12,12 @@ namespace ClinicaFrba
 {
     public partial class SeleccionRol : Form
     {
-
+        Objetos.Usuario UsuarioActual = new Objetos.Usuario(); 
 
         public SeleccionRol(Int64 idUsuario)
         {
             InitializeComponent();
-
+            UsuarioActual.id_user = idUsuario;
             //Obtengo la conexion desde la clase "Conexion"
             SqlConnection conexionABase = Conexion.ObtenerConexion();
             string CMD = string.Format("SELECT r.ID_Rol AS Id_Rol, r.Nombre AS Rol from [ANOTHER_CAT].tl_Usuario_Rol as ur join [GD2C2016].[ANOTHER_CAT].tl_rol as R on ur.ID_Rol = r.ID_Rol where ur.ID_Usuario='{0}'", idUsuario);
@@ -28,7 +28,7 @@ namespace ClinicaFrba
             adapter.Fill(dt);
             comboRol.DataSource = dt;
             comboRol.DisplayMember = "Rol";
-            comboRol.ValueMember = "Rol";
+            comboRol.ValueMember = "ID_Rol";
             //Cierro la conexion
             conexionABase.Close();
 
@@ -48,28 +48,17 @@ namespace ClinicaFrba
         private void ingresarRol_Click_1(object sender, EventArgs e)
         {
 
-            //int idRolSeleccionado = Convert.ToInt32(comboRol.SelectedValue);
-            //string rol = comboRol.Text;
-            string rol = comboRol.SelectedValue.ToString();
-           // MenuPpal menuPpal = new MenuPpal();
-            
-            switch (rol)
-            {
-                case "Administrativo": MenuAdministrativo menuAdm = new MenuAdministrativo();
-                    menuAdm.Show(this);
-                    break;
-                case "Afiliado": MenuPpal menuAfi = new MenuPpal();
-                    menuAfi.Show(this);
-                    break;
-                case "Profesional": MenuProfesional menuProf = new MenuProfesional();
-                    menuProf.Show(this);
-                    break;
-                case "Administrador":
-                    break;
+            UsuarioActual.Id_rol = Convert.ToInt32(comboRol.SelectedValue); // ver que estoy pasando el string y no el id
+            UsuarioActual.DescripcionRol= comboRol.Text;
+           // string rol = comboRol.SelectedValue.ToString();
 
-            }
+
+            MenuPpal menuPpal = new MenuPpal(UsuarioActual);
+            menuPpal.Show(this);
+                    
+
             this.Hide();
-           // menuPpal.Show();
+  
         }
 
         private void SeleccionRol_FormClosed(object sender, FormClosedEventArgs e)

@@ -99,32 +99,23 @@ namespace ClinicaFrba
                         }
                         else
                         {
+                             Objetos.Usuario usuarioActual = new Objetos.Usuario();
+                            usuarioActual.id_user = idUser;
+
                             conexionABase = Conexion.ObtenerConexion();
-                            string CMD = string.Format("SELECT  r.Nombre  from [ANOTHER_CAT].tl_Usuario_Rol as ur join [GD2C2016].[ANOTHER_CAT].tl_rol as R on ur.ID_Rol = r.ID_Rol where ur.ID_Usuario='{0}'", idUser);
+                           // string CMD = string.Format("SELECT  r.Nombre  from [ANOTHER_CAT].tl_Usuario_Rol as ur join [GD2C2016].[ANOTHER_CAT].tl_rol as R on ur.ID_Rol = r.ID_Rol where ur.ID_Usuario='{0}'", idUser);
+                            string CMD = string.Format("SELECT  ID_Rol  from [ANOTHER_CAT].tl_Usuario_Rol where ID_Usuario='{0}'", idUser); 
                             SqlCommand comandoLlenado = new SqlCommand(CMD, conexionABase);
                             SqlDataReader ReadRol= comandoLlenado.ExecuteReader();
                             ReadRol.Read();
-                            string rolUsuario = ReadRol[0].ToString();
-
-                            switch (rolUsuario)
-                            {
-                                case "ADMINISTRATIVO": MenuAdministrativo menuAdm = new MenuAdministrativo();
-                                    menuAdm.Show(this);
-                                    break;
-                                case "AFILIADO": MenuPpal menuAfi = new MenuPpal();
-                                    menuAfi.Show(this);
-                                    break;
-                                case "PROFESIONAL": MenuProfesional menuProf = new MenuProfesional();
-                                    menuProf.Show(this);
-                                    break;
-                                case "ADMINISTRADOR": MenuAdministrativo menuAdm2 = new MenuAdministrativo();
-                                    menuAdm2.Show(this);
-                                    break;
-
+                           // string rolUsuario = ReadRol[0].ToString();
+                           usuarioActual.Id_rol = Int32.Parse(ReadRol[0].ToString());
+                           conexionABase.Close();
+                            MenuPpal menuPpal = new MenuPpal(usuarioActual);
+                            this.Hide();
+                            menuPpal.Show(this);
                             }
-                            conexionABase.Close();
-
-                        }
+                            
                        
                        // this.Close();
                         break;

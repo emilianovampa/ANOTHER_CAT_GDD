@@ -4,7 +4,6 @@ C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\C
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.DatosRol.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Rolppal.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuAdministrativo.resources
-C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuAfiliado.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuPpal.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuProfesional.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.Pedir_Turno.PedirTurno.resources

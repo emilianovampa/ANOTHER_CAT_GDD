@@ -12,7 +12,7 @@ namespace ClinicaFrba
 {
     public partial class MenuPpal : Form
     {
-        public MenuPpal()
+        public MenuPpal(Objetos.Usuario usuarioActual)
         {
             InitializeComponent();
 
