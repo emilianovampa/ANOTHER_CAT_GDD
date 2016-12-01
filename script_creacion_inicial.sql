@@ -307,9 +307,11 @@ GO
 CREATE TABLE ANOTHER_CAT.tl_Rol_Funcionalidad (
 	ID_Rol BIGINT NOT NULL,
 	ID_Funcionalidad BIGINT NOT NULL,
-		PRIMARY KEY(ID_Rol, ID_Funcionalidad)
+		PRIMARY KEY(ID_Rol, ID_Funcionalidad),
+	FuncionalidadXRol_activo bit NOT NULL default(1)
 )
-GO
+
+go
 
 
 
