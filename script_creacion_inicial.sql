@@ -593,7 +593,7 @@ SELECT DISTINCT (ID_Plan_Medico), Descripcion, Precio_Bono_Consulta, Precio_Bono
 FROM @MIGRACION_AFILIADO;
 
 INSERT INTO ANOTHER_CAT.tl_Usuario (Username,Password,Nombre, Apellido, Direccion, Telefono, Mail, Fecha_Nacimiento, Nro_Documento)
-SELECT 'AFILIADO', HASHBYTES('SHA2_256', @input),Nombre, Apellido, Direccion, Telefono, Mail, Fecha_Nacimiento, Nro_Documento
+SELECT Nombre+Apellido, HASHBYTES('SHA2_256', @input),Nombre, Apellido, Direccion, Telefono, Mail, Fecha_Nacimiento, Nro_Documento
 FROM @MIGRACION_AFILIADO;
 
 
@@ -605,7 +605,7 @@ FROM @MIGRACION_AFILIADO AS MA;
 INSERT INTO ANOTHER_CAT.tl_Usuario_Rol(ID_Usuario, ID_Rol)
 SELECT ID_Usuario, 3
 FROM ANOTHER_CAT.tl_Usuario
-WHERE Username = 'AFILIADO'
+WHERE Username = Nombre+Apellido
 
 
 DECLARE @MIGRACION_PROFESIONAL TABLE (
@@ -628,7 +628,7 @@ WHERE Medico_Dni IS NOT NULL;
 
 
 INSERT INTO ANOTHER_CAT.tl_Usuario (Username, Password,Nombre, Apellido, Direccion, Nro_Documento, Telefono, Mail, Fecha_Nacimiento)
-SELECT 'PROFESIONAL', HASHBYTES('SHA2_256', @input), Nombre, Apellido, Direccion, Nro_Documento, Telefono, Mail, Fecha_Nacimiento
+SELECT Nombre+Apellido, HASHBYTES('SHA2_256', @input), Nombre, Apellido, Direccion, Nro_Documento, Telefono, Mail, Fecha_Nacimiento
 FROM @MIGRACION_PROFESIONAL;
 
 
@@ -642,7 +642,7 @@ FROM @MIGRACION_PROFESIONAL AS M;
 INSERT INTO ANOTHER_CAT.tl_Usuario_Rol(ID_Usuario, ID_Rol)
 SELECT ID_Usuario, 2
 FROM ANOTHER_CAT.tl_Usuario
-WHERE Username = 'PROFESIONAL'
+WHERE Username = Nombre+Apellido
 
 
 DECLARE @MIGRACION_ESPECIALIDAD TABLE (
@@ -682,7 +682,8 @@ DECLARE @MIGRACION_CONSULTA TABLE (
 	Fecha_Impresion DATETIME,
 	Bono_Numero NUMERIC(18,0),
 	Sintomas VARCHAR(255),
-	Diagnostico VARCHAR(255)
+	Diagnostico VARCHAR(255),
+	Importe NUMERIC(18,2)
 );
 
 	DECLARE @COMPRA_BONO TABLE (
@@ -690,7 +691,9 @@ DECLARE @MIGRACION_CONSULTA TABLE (
 	ID_Afiliado BIGINT,
 	Nro_Bono NUMERIC(18,0),
 	Fecha_Compra DATETIME,
-	Fecha_Impresion DATETIME
+	Fecha_Impresion DATETIME,
+	Cantidad_Bonos BIGINT,
+	Importe NUMERIC(18,2)
 );
 
 	DECLARE @CANTIDAD_CONSULTAS TABLE (
@@ -699,10 +702,10 @@ DECLARE @MIGRACION_CONSULTA TABLE (
 );
 
 
-INSERT INTO @MIGRACION_CONSULTA(ID_Afiliado, ID_Profesional, ID_Especialidad, Fecha_Turno, Nro_Turno, Fecha_Compra, Fecha_Impresion, Bono_Numero, Sintomas, Diagnostico)
+INSERT INTO @MIGRACION_CONSULTA(ID_Afiliado, ID_Profesional, ID_Especialidad, Fecha_Turno, Nro_Turno, Fecha_Compra, Fecha_Impresion, Bono_Numero, Sintomas, Diagnostico, Importe)
 SELECT (SELECT ID_Usuario FROM ANOTHER_CAT.tl_Usuario AS P WHERE P.Nro_Documento = M.Paciente_Dni),
 	   (SELECT ID_Usuario FROM ANOTHER_CAT.tl_Usuario AS P2 WHERE P2.Nro_Documento = M.Medico_Dni),
-	   Especialidad_Codigo, Turno_Fecha, Turno_Numero, Compra_Bono_Fecha, Bono_Consulta_Fecha_Impresion, Bono_Consulta_Numero,Consulta_Sintomas, Consulta_Enfermedades
+	   Especialidad_Codigo, Turno_Fecha, Turno_Numero, Compra_Bono_Fecha, Bono_Consulta_Fecha_Impresion, Bono_Consulta_Numero,Consulta_Sintomas, Consulta_Enfermedades, Plan_Med_Precio_Bono_Consulta
 FROM gd_esquema.Maestra M;
 
 INSERT INTO ANOTHER_CAT.tl_Turno (ID_Turno, Fecha, ID_Profesional, ID_Afiliado, ID_Especialidad)
@@ -710,13 +713,14 @@ SELECT Nro_Turno, Fecha_Turno, ID_Profesional, ID_Afiliado, ID_Especialidad
 FROM @MIGRACION_CONSULTA
 WHERE (Sintomas IS NULL AND Fecha_Compra IS NULL AND Nro_Turno IS NOT NULL);
 
-INSERT INTO @COMPRA_BONO (ID_Afiliado, Nro_Bono, Fecha_Compra, Fecha_Impresion)
-SELECT ID_Afiliado, Bono_Numero, Fecha_Compra, Fecha_Impresion
+INSERT INTO @COMPRA_BONO (ID_Afiliado, Nro_Bono, Fecha_Compra, Fecha_Impresion, Cantidad_Bonos, Importe)
+SELECT ID_Afiliado, Bono_Numero, Fecha_Compra, Fecha_Impresion, count(*), (COUNT(*)*Importe)
 FROM @MIGRACION_CONSULTA AS MC
-WHERE MC.Fecha_Turno IS NULL;
+WHERE MC.Fecha_Turno IS NULL
+GROUP BY ID_Afiliado, Bono_Numero, Fecha_Compra, Fecha_Impresion, Importe;
 
-INSERT INTO ANOTHER_CAT.tl_Compra_Bono (ID_Afiliado, Fecha_Compra, Fecha_Impresion)
-SELECT ID_Afiliado, Fecha_Compra, Fecha_Impresion
+INSERT INTO ANOTHER_CAT.tl_Compra_Bono (ID_Afiliado, Fecha_Compra, Fecha_Impresion, Cantidad_Bonos, Importe)
+SELECT ID_Afiliado, Fecha_Compra, Fecha_Impresion, Cantidad_Bonos, Importe
 FROM @COMPRA_BONO;
 
 INSERT INTO ANOTHER_CAT.tl_Bono (ID_Operacion, ID_Plan_Medico, Nro_afiliado, Nro_Bono)
@@ -743,6 +747,220 @@ SELECT DISTINCT P.ID_Profesional, Fecha, EP.ID_Especialidad, '2015-01-01', '2015
 FROM ANOTHER_CAT.tl_Profesional AS P JOIN ANOTHER_CAT.tl_Especialidad_Profesional AS EP ON (P.ID_Profesional = EP.ID_Profesional) JOIN
      ANOTHER_CAT.tl_Turno AS T ON (EP.ID_Profesional = T.ID_Profesional);
 
+GO
+
+--Procedimientos de listado estadistico
+
+--Especialidades con mas cancelaciones de afiliados y profesionales (punto 1)
+--En principio no va a aparecer nada, porque se supone que todos los turnos fueron atendidos.
+
+IF OBJECT_ID('[ANOTHER_CAT].[SP_Especialidades_Mas_Canceladas]') IS NOT NULL
+	DROP PROCEDURE ANOTHER_CAT.SP_Especialidades_Mas_Canceladas
+GO
+
+
+CREATE PROCEDURE ANOTHER_CAT.SP_Especialidades_Mas_Canceladas
+@ANIO INT,
+@SEMESTRE INT,
+@MES INT
+
+AS
+BEGIN
+
+SELECT TOP 5 COUNT(DISTINCT T.ID_Turno) 'Cantidad Turnos',
+(SELECT E.Descripcion FROM ANOTHER_CAT.tl_Especialidad E WHERE E.ID_Especialidad = T.ID_Especialidad) 'Especialidad'
+
+FROM ANOTHER_CAT.tl_Turno T INNER JOIN ANOTHER_CAT.tl_Turno_Cancelacion C ON T.ID_Turno = C.ID_Turno_Cancelado
+WHERE (
+((@SEMESTRE = 1) AND (@MES = 0) AND YEAR(T.Fecha) = @ANIO AND MONTH(T.Fecha) < 7 AND T.Fecha < GETDATE())
+OR
+((@SEMESTRE = 1) AND (@MES <> 0) AND YEAR(T.Fecha) = @ANIO AND MONTH(T.Fecha) = @MES AND T.Fecha < GETDATE())
+OR
+((@SEMESTRE = 2) AND (@MES = 0) AND YEAR(T.Fecha) = @ANIO AND MONTH(T.Fecha) >= 7 AND T.Fecha < GETDATE())
+OR
+((@SEMESTRE = 2) AND (@MES <> 0) AND YEAR(T.Fecha) = @ANIO AND MONTH(T.Fecha) = @MES AND T.Fecha < GETDATE())
+)
+GROUP BY T.ID_Especialidad
+ORDER BY 'Cantidad Turnos' DESC
+
+END;
+GO
+
+
+-- Profesional mas consultado por plan (2do punto en enunciado)
+
+IF OBJECT_ID('[ANOTHER_CAT].[SP_Profesional_Mas_Consultas_Plan]') IS NOT NULL
+	DROP PROCEDURE ANOTHER_CAT.SP_Profesional_Mas_Consultas_Plan
+GO
+
+
+CREATE PROCEDURE ANOTHER_CAT.SP_Profesional_Mas_Consultas_Plan
+@PLAN NUMERIC(18,0),
+@ANIO INT,
+@SEMESTRE INT,
+@MES INT
+
+AS 
+BEGIN
+
+SELECT TOP 5 COUNT(T.ID_Turno) 'Cantidad Turnos',
+(SELECT PM.Descripcion FROM ANOTHER_CAT.tl_Plan_Medico PM WHERE PM.ID_Plan_Medico = A.ID_Plan_Medico) 'Plan Medico',
+(SELECT PR.Matricula FROM ANOTHER_CAT.tl_Profesional PR WHERE PR.ID_Profesional = T.ID_Profesional) 'Matricula Profesional',
+(SELECT ES.Descripcion FROM ANOTHER_CAT.tl_Especialidad ES WHERE ES.ID_Especialidad = T.ID_Especialidad) 'Especialidad'
+
+FROM ANOTHER_CAT.tl_Consulta_Medica CM LEFT JOIN ANOTHER_CAT.tl_Turno T ON T.ID_Turno = CM.ID_Turno
+INNER JOIN ANOTHER_CAT.tl_Afiliado A ON T.ID_Afiliado = A.ID_Afiliado
+WHERE (
+((@SEMESTRE = 1) AND (@MES = 0) AND YEAR(T.Fecha)=@ANIO AND MONTH(T.Fecha) < 7 AND
+T.Fecha < GETDATE() AND CM.Registro_Atencion IS NOT NULL AND A.ID_Plan_Medico = @PLAN)
+OR
+((@SEMESTRE = 1) AND (@MES <> 0) AND YEAR(T.Fecha)=@ANIO AND MONTH(T.Fecha) = @MES AND
+T.Fecha < GETDATE() AND CM.Registro_Atencion IS NOT NULL AND A.ID_Plan_Medico = @PLAN)
+OR
+((@SEMESTRE = 2) AND (@MES = 0) AND YEAR(T.Fecha)=@ANIO AND MONTH(T.Fecha) >= 7 AND
+T.Fecha < GETDATE() AND CM.Registro_Atencion IS NOT NULL AND A.ID_Plan_Medico = @PLAN)
+OR
+((@SEMESTRE = 2) AND (@MES <> 0) AND YEAR(T.Fecha)=@ANIO AND MONTH(T.Fecha) = @MES AND
+T.Fecha < GETDATE() AND CM.Registro_Atencion IS NOT NULL AND A.ID_Plan_Medico = @PLAN)
+)
+GROUP BY A.ID_Plan_Medico, T.ID_Profesional, T.ID_Especialidad
+ORDER BY 'Cantidad Turnos' DESC
+
+END;
+GO
+
+
+-- Profesinonal con menos horas trabajadas (punto 3 en el ununciado)
+
+IF OBJECT_ID('[ANOTHER_CAT].[SP_Profesional_Menos_Trabajo]') IS NOT NULL
+	DROP PROCEDURE ANOTHER_CAT.SP_Profesional_Menos_Trabajo
+GO
+
+
+CREATE PROCEDURE ANOTHER_CAT.SP_Profesional_Menos_Trabajo
+@ESPECIALIDAD NUMERIC(18,0),
+@ANIO INT,
+@SEMESTRE INT,
+@MES INT
+
+AS
+BEGIN
+
+SELECT TOP 5 COUNT(DISTINCT AG.Fecha)*0.5 'Horas Trabajadas',
+(SELECT PR.Matricula FROM ANOTHER_CAT.tl_Profesional PR WHERE PR.ID_Profesional = AG.ID_Profesional) 'Matricula Profesional'
+
+FROM ANOTHER_CAT.tl_Agenda AG
+WHERE (
+((@SEMESTRE = 1) AND (@MES = 0) AND YEAR(AG.Fecha) = @ANIO AND MONTH(AG.Fecha) < 7 AND AG.Fecha < GETDATE() AND AG.ID_Especialidad=@ESPECIALIDAD)
+OR
+((@SEMESTRE = 1) AND (@MES <> 0) AND YEAR(AG.Fecha) = @ANIO AND MONTH(AG.Fecha) = @MES AND AG.Fecha < GETDATE() AND AG.ID_Especialidad=@ESPECIALIDAD)
+OR
+((@SEMESTRE = 2) AND (@MES = 0) AND YEAR(AG.Fecha) = @ANIO AND MONTH(AG.Fecha) >= 7 AND AG.Fecha < GETDATE() AND AG.ID_Especialidad=@ESPECIALIDAD)
+OR
+((@SEMESTRE = 2) AND (@MES <> 0) AND YEAR(AG.Fecha) = @ANIO AND MONTH(AG.Fecha) = @MES AND AG.Fecha < GETDATE() AND AG.ID_Especialidad=@ESPECIALIDAD)
+)
+GROUP BY AG.ID_Profesional
+ORDER BY 'Horas Trabajadas' ASC
+
+
+END;
+GO
+
+
+-- TOP 5 de especilaidad con mas bonos consulta (5to en el enunciado)
+
+IF OBJECT_ID('[ANOTHER_CAT].[SP_Especilidad_Mas_Bonos]') IS NOT NULL
+	DROP PROCEDURE ANOTHER_CAT.SP_Especilidad_Mas_Bonos
+GO
+
+
+CREATE PROCEDURE ANOTHER_CAT.SP_Especilidad_Mas_Bonos
+@ANIO INT,
+@SEMESTRE INT,
+@MES INT
+
+AS
+BEGIN
+
+SELECT TOP 5 COUNT(cm.ID_Bono) 'Cantidad Bonos',
+(SELECT es.Descripcion FROM ANOTHER_CAT.tl_Especialidad es WHERE es.ID_Especialidad = tu.ID_Especialidad) 'Especialidad'
+
+FROM ANOTHER_CAT.tl_Consulta_Medica cm LEFT JOIN ANOTHER_CAT.tl_Turno tu ON(cm.ID_Turno = tu.ID_Turno)
+WHERE (
+((@SEMESTRE = 1) AND (@MES = 0) AND YEAR(CM.Registro_Llegada) = @ANIO AND MONTH(CM.Registro_Llegada) < 7 AND CM.Registro_Llegada < GETDATE())
+OR
+((@SEMESTRE = 1) AND (@MES <> 0) AND YEAR(CM.Registro_Llegada) = @ANIO AND MONTH(CM.Registro_Llegada) = @MES AND CM.Registro_Llegada < GETDATE())
+OR
+((@SEMESTRE = 2) AND (@MES = 0) AND YEAR(CM.Registro_Llegada) = @ANIO AND MONTH(CM.Registro_Llegada) >= 7 AND CM.Registro_Llegada < GETDATE())
+OR
+((@SEMESTRE = 2) AND (@MES <> 0) AND YEAR(CM.Registro_Llegada) = @ANIO AND MONTH(CM.Registro_Llegada) = @MES AND CM.Registro_Llegada < GETDATE())
+)
+GROUP BY tu.ID_Especialidad
+ORDER BY 'Cantidad Bonos' DESC;
+
+END;
+GO
+
+--TOP 5 de afiliado con mayor cantidad de bonos comprados (4ta en el enunciado)
+
+IF OBJECT_ID('[ANOTHER_CAT].[SP_Afiliados_Mas_Bonos]') IS NOT NULL
+	DROP PROCEDURE ANOTHER_CAT.SP_Afiliados_Mas_Bonos
+GO
+
+
+CREATE PROCEDURE ANOTHER_CAT.SP_Afiliados_Mas_Bonos
+@ANIO INT,
+@SEMESTRE INT,
+@MES INT
+
+AS
+BEGIN
+
+SELECT TOP 5 SUM(B.Cantidad_Bonos) 'Bonos Comprados', A.Numero_Afiliado,
+(CASE WHEN RIGHT(CONVERT(VARCHAR(20), A.Numero_Afiliado), 2) = '01' THEN 'Afiliado Raiz'
+ELSE 'Grupo Familiar' END) 'Tipo Afiliado'
+
+FROM ANOTHER_CAT.tl_Compra_Bono B INNER JOIN ANOTHER_CAT.tl_Afiliado A ON B.ID_Afiliado = A.ID_Afiliado
+WHERE (
+((@SEMESTRE = 1) AND (@MES = 0) AND YEAR(B.Fecha_Compra) = @ANIO AND MONTH(B.Fecha_Compra) < 7 AND B.Fecha_Compra < GETDATE())
+OR
+((@SEMESTRE = 1) AND (@MES <> 0) AND YEAR(B.Fecha_Compra) = @ANIO AND MONTH(B.Fecha_Compra) = @MES AND B.Fecha_Compra < GETDATE())
+OR
+((@SEMESTRE = 2) AND (@MES = 0) AND YEAR(B.Fecha_Compra) = @ANIO AND MONTH(B.Fecha_Compra) >= 7 AND B.Fecha_Compra < GETDATE())
+OR
+((@SEMESTRE = 2) AND (@MES <> 0) AND YEAR(B.Fecha_Compra) = @ANIO AND MONTH(B.Fecha_Compra) = @MES AND B.Fecha_Compra < GETDATE())
+)
+GROUP BY B.ID_Afiliado, A.Numero_Afiliado
+ORDER BY 'Bonos Comprados' DESC;
+
+END;
+GO
+
+-- Procedimientos con update, insert y delete
+
+--Resgistra la atencion medica, el diagnostico
+
+IF OBJECT_ID('[ANOTHER_CAT].[SP_Registrar_Atencion_Medica]') IS NOT NULL
+	DROP PROCEDURE ANOTHER_CAT.SP_Registrar_Atencion_Medica
+GO
+
+
+
+CREATE PROCEDURE ANOTHER_CAT.SP_Registrar_Atencion_Medica
+@ID_Consulta INT,
+@SINTOMA VARCHAR(255),
+@DIAGNOSTICO VARCHAR(255),
+@HORA_ATENCION DATETIME
+
+AS
+BEGIN
+
+UPDATE ANOTHER_CAT.tl_Consulta_Medica
+SET Sintomas = @SINTOMA, Diagnostico = @DIAGNOSTICO, Registro_Atencion = @HORA_ATENCION
+WHERE ID_Consulta = @ID_Consulta;
+
+END;
+GO
 
 
 
