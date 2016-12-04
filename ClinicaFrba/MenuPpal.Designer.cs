@@ -32,22 +32,25 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procesoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comprarBonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pedirTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelarTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarLlegadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarResultadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.afiliadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarAfiliadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarAfiliadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profesionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprarBono = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedirTurno = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelarTurno = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarLlegada = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarResultados = new System.Windows.Forms.ToolStripMenuItem();
+            this.consulta = new System.Windows.Forms.ToolStripMenuItem();
+            this.AfiliadoABM = new System.Windows.Forms.ToolStripMenuItem();
+            this.CrearAfiliado = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarAfiliado = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarAfiliado = new System.Windows.Forms.ToolStripMenuItem();
+            this.profesionalABM = new System.Windows.Forms.ToolStripMenuItem();
+            this.agendaABM = new System.Windows.Forms.ToolStripMenuItem();
+            this.rolABM = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modicarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EspecialicadMedicaABM = new System.Windows.Forms.ToolStripMenuItem();
+            this.PlanesMedicosABM = new System.Windows.Forms.ToolStripMenuItem();
+            this.ListadoEstadisticoABM = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +59,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.procesoToolStripMenuItem,
-            this.consultaToolStripMenuItem});
+            this.consulta});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(765, 24);
@@ -74,135 +77,160 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // procesoToolStripMenuItem
             // 
             this.procesoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comprarBonoToolStripMenuItem,
-            this.pedirTurnoToolStripMenuItem,
-            this.cancelarTurnoToolStripMenuItem,
-            this.registrarLlegadaToolStripMenuItem,
-            this.registrarResultadosToolStripMenuItem});
+            this.comprarBono,
+            this.pedirTurno,
+            this.cancelarTurno,
+            this.registrarLlegada,
+            this.registrarResultados});
             this.procesoToolStripMenuItem.Name = "procesoToolStripMenuItem";
             this.procesoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.procesoToolStripMenuItem.Text = "Proceso";
             // 
-            // comprarBonoToolStripMenuItem
+            // comprarBono
             // 
-            this.comprarBonoToolStripMenuItem.Name = "comprarBonoToolStripMenuItem";
-            this.comprarBonoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.comprarBonoToolStripMenuItem.Text = "Comprar Bono";
-            this.comprarBonoToolStripMenuItem.Click += new System.EventHandler(this.comprarBonoToolStripMenuItem_Click);
+            this.comprarBono.Name = "comprarBono";
+            this.comprarBono.Size = new System.Drawing.Size(180, 22);
+            this.comprarBono.Text = "Comprar Bono";
+            this.comprarBono.Click += new System.EventHandler(this.comprarBonoToolStripMenuItem_Click);
             // 
-            // pedirTurnoToolStripMenuItem
+            // pedirTurno
             // 
-            this.pedirTurnoToolStripMenuItem.Name = "pedirTurnoToolStripMenuItem";
-            this.pedirTurnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pedirTurnoToolStripMenuItem.Text = "Pedir Turno";
-            this.pedirTurnoToolStripMenuItem.Click += new System.EventHandler(this.pedirTurnoToolStripMenuItem_Click);
+            this.pedirTurno.Name = "pedirTurno";
+            this.pedirTurno.Size = new System.Drawing.Size(180, 22);
+            this.pedirTurno.Text = "Pedir Turno";
+            this.pedirTurno.Click += new System.EventHandler(this.pedirTurnoToolStripMenuItem_Click);
             // 
-            // cancelarTurnoToolStripMenuItem
+            // cancelarTurno
             // 
-            this.cancelarTurnoToolStripMenuItem.Name = "cancelarTurnoToolStripMenuItem";
-            this.cancelarTurnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cancelarTurnoToolStripMenuItem.Text = "Cancelar Turno";
-            this.cancelarTurnoToolStripMenuItem.Click += new System.EventHandler(this.cancelarTurnoToolStripMenuItem_Click);
+            this.cancelarTurno.Name = "cancelarTurno";
+            this.cancelarTurno.Size = new System.Drawing.Size(180, 22);
+            this.cancelarTurno.Text = "Cancelar Turno";
+            this.cancelarTurno.Click += new System.EventHandler(this.cancelarTurnoToolStripMenuItem_Click);
             // 
-            // registrarLlegadaToolStripMenuItem
+            // registrarLlegada
             // 
-            this.registrarLlegadaToolStripMenuItem.Name = "registrarLlegadaToolStripMenuItem";
-            this.registrarLlegadaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.registrarLlegadaToolStripMenuItem.Text = "Registrar Llegada";
-            this.registrarLlegadaToolStripMenuItem.Click += new System.EventHandler(this.registrarLlegadaToolStripMenuItem_Click);
+            this.registrarLlegada.Name = "registrarLlegada";
+            this.registrarLlegada.Size = new System.Drawing.Size(180, 22);
+            this.registrarLlegada.Text = "Registrar Llegada";
+            this.registrarLlegada.Click += new System.EventHandler(this.registrarLlegadaToolStripMenuItem_Click);
             // 
-            // registrarResultadosToolStripMenuItem
+            // registrarResultados
             // 
-            this.registrarResultadosToolStripMenuItem.Name = "registrarResultadosToolStripMenuItem";
-            this.registrarResultadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.registrarResultadosToolStripMenuItem.Text = "Registrar Resultados";
+            this.registrarResultados.Name = "registrarResultados";
+            this.registrarResultados.Size = new System.Drawing.Size(180, 22);
+            this.registrarResultados.Text = "Registrar Resultados";
             // 
-            // consultaToolStripMenuItem
+            // consulta
             // 
-            this.consultaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.afiliadoToolStripMenuItem,
-            this.profesionalToolStripMenuItem,
-            this.agendaToolStripMenuItem,
-            this.rolToolStripMenuItem});
-            this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
-            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.consultaToolStripMenuItem.Text = "Consulta";
+            this.consulta.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AfiliadoABM,
+            this.profesionalABM,
+            this.agendaABM,
+            this.rolABM,
+            this.EspecialicadMedicaABM,
+            this.PlanesMedicosABM,
+            this.ListadoEstadisticoABM});
+            this.consulta.Name = "consulta";
+            this.consulta.Size = new System.Drawing.Size(66, 20);
+            this.consulta.Text = "Consulta";
             // 
-            // afiliadoToolStripMenuItem
+            // AfiliadoABM
             // 
-            this.afiliadoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.modificarAfiliadoToolStripMenuItem,
-            this.eliminarAfiliadoToolStripMenuItem});
-            this.afiliadoToolStripMenuItem.Name = "afiliadoToolStripMenuItem";
-            this.afiliadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.afiliadoToolStripMenuItem.Text = "Afiliado";
+            this.AfiliadoABM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CrearAfiliado,
+            this.modificarAfiliado,
+            this.eliminarAfiliado});
+            this.AfiliadoABM.Name = "AfiliadoABM";
+            this.AfiliadoABM.Size = new System.Drawing.Size(181, 22);
+            this.AfiliadoABM.Text = "Afiliado";
+            this.AfiliadoABM.Click += new System.EventHandler(this.afiliadoToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // CrearAfiliado
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
-            this.toolStripMenuItem1.Text = "Crear Afiliado";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.CrearAfiliado.Name = "CrearAfiliado";
+            this.CrearAfiliado.Size = new System.Drawing.Size(169, 22);
+            this.CrearAfiliado.Text = "Crear Afiliado";
+            this.CrearAfiliado.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // modificarAfiliadoToolStripMenuItem
+            // modificarAfiliado
             // 
-            this.modificarAfiliadoToolStripMenuItem.Name = "modificarAfiliadoToolStripMenuItem";
-            this.modificarAfiliadoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.modificarAfiliadoToolStripMenuItem.Text = "Modificar Afiliado";
+            this.modificarAfiliado.Name = "modificarAfiliado";
+            this.modificarAfiliado.Size = new System.Drawing.Size(169, 22);
+            this.modificarAfiliado.Text = "Modificar Afiliado";
             // 
-            // eliminarAfiliadoToolStripMenuItem
+            // eliminarAfiliado
             // 
-            this.eliminarAfiliadoToolStripMenuItem.Name = "eliminarAfiliadoToolStripMenuItem";
-            this.eliminarAfiliadoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.eliminarAfiliadoToolStripMenuItem.Text = "Eliminar Afiliado";
+            this.eliminarAfiliado.Name = "eliminarAfiliado";
+            this.eliminarAfiliado.Size = new System.Drawing.Size(169, 22);
+            this.eliminarAfiliado.Text = "Eliminar Afiliado";
             // 
-            // profesionalToolStripMenuItem
+            // profesionalABM
             // 
-            this.profesionalToolStripMenuItem.Name = "profesionalToolStripMenuItem";
-            this.profesionalToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.profesionalToolStripMenuItem.Text = "Profesional";
+            this.profesionalABM.Name = "profesionalABM";
+            this.profesionalABM.Size = new System.Drawing.Size(181, 22);
+            this.profesionalABM.Text = "Profesional";
             // 
-            // agendaToolStripMenuItem
+            // agendaABM
             // 
-            this.agendaToolStripMenuItem.Name = "agendaToolStripMenuItem";
-            this.agendaToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.agendaToolStripMenuItem.Text = "Agenda";
+            this.agendaABM.Name = "agendaABM";
+            this.agendaABM.Size = new System.Drawing.Size(181, 22);
+            this.agendaABM.Text = "Agenda";
             // 
-            // rolToolStripMenuItem
+            // rolABM
             // 
-            this.rolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rolABM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaToolStripMenuItem,
             this.modicarToolStripMenuItem,
             this.eliminarToolStripMenuItem});
-            this.rolToolStripMenuItem.Name = "rolToolStripMenuItem";
-            this.rolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.rolToolStripMenuItem.Text = "Rol";
+            this.rolABM.Name = "rolABM";
+            this.rolABM.Size = new System.Drawing.Size(181, 22);
+            this.rolABM.Text = "Rol";
             // 
             // altaToolStripMenuItem
             // 
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
             this.altaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.altaToolStripMenuItem.Text = "Alta";
+            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
             // 
             // modicarToolStripMenuItem
             // 
             this.modicarToolStripMenuItem.Name = "modicarToolStripMenuItem";
             this.modicarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modicarToolStripMenuItem.Text = "Modicar";
+            this.modicarToolStripMenuItem.Click += new System.EventHandler(this.modicarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            // 
+            // EspecialicadMedicaABM
+            // 
+            this.EspecialicadMedicaABM.Name = "EspecialicadMedicaABM";
+            this.EspecialicadMedicaABM.Size = new System.Drawing.Size(181, 22);
+            this.EspecialicadMedicaABM.Text = "Especialidad Medica";
+            // 
+            // PlanesMedicosABM
+            // 
+            this.PlanesMedicosABM.Name = "PlanesMedicosABM";
+            this.PlanesMedicosABM.Size = new System.Drawing.Size(181, 22);
+            this.PlanesMedicosABM.Text = "Plan Medico";
+            // 
+            // ListadoEstadisticoABM
+            // 
+            this.ListadoEstadisticoABM.Name = "ListadoEstadisticoABM";
+            this.ListadoEstadisticoABM.Size = new System.Drawing.Size(181, 22);
+            this.ListadoEstadisticoABM.Text = "Listado Estadistico";
             // 
             // MenuPpal
             // 
@@ -228,21 +256,24 @@
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem procesoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comprarBonoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pedirTurnoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelarTurnoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registrarLlegadaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem afiliadoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem modificarAfiliadoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarAfiliadoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem profesionalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registrarResultadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem agendaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprarBono;
+        private System.Windows.Forms.ToolStripMenuItem pedirTurno;
+        private System.Windows.Forms.ToolStripMenuItem cancelarTurno;
+        private System.Windows.Forms.ToolStripMenuItem consulta;
+        private System.Windows.Forms.ToolStripMenuItem registrarLlegada;
+        private System.Windows.Forms.ToolStripMenuItem AfiliadoABM;
+        private System.Windows.Forms.ToolStripMenuItem CrearAfiliado;
+        private System.Windows.Forms.ToolStripMenuItem modificarAfiliado;
+        private System.Windows.Forms.ToolStripMenuItem eliminarAfiliado;
+        private System.Windows.Forms.ToolStripMenuItem profesionalABM;
+        private System.Windows.Forms.ToolStripMenuItem registrarResultados;
+        private System.Windows.Forms.ToolStripMenuItem agendaABM;
+        private System.Windows.Forms.ToolStripMenuItem rolABM;
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modicarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EspecialicadMedicaABM;
+        private System.Windows.Forms.ToolStripMenuItem PlanesMedicosABM;
+        private System.Windows.Forms.ToolStripMenuItem ListadoEstadisticoABM;
     }
 }

@@ -40,13 +40,9 @@ namespace ClinicaFrba
         public static DataSet Ejecutar(string cmd)
         {
 
-            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            System.Data.SqlClient.SqlConnection conexion = ObtenerConexion();
 
-            conexion.ConnectionString = "Server=localhost\\ ;Database=GD2C2016;User Id=gd;Password=gd2016;";
-
-            //    SqlConnection conexion = new SqlConnection("Data Source=ELTURKO-PC2\SQLSERVER2012;User ID=gd;Password=gd2016");
-            conexion.Open();
-
+           
             DataSet DS = new DataSet();
             SqlDataAdapter DP = new SqlDataAdapter(cmd, conexion);
 
@@ -58,6 +54,25 @@ namespace ClinicaFrba
 
 
         }
+
+
+        public static DataTable EjecutarComboBox(string cmd)
+        {
+
+            System.Data.SqlClient.SqlConnection conexion = ObtenerConexion();
+            SqlCommand comandoLlenado = new SqlCommand(cmd, conexion);
+            SqlDataAdapter adapter = new SqlDataAdapter(comandoLlenado);
+            DataTable dt = new DataTable();
+            //Cierro la conexion
+           
+            adapter.Fill(dt);
+            conexion.Close();
+            return dt;
+
+
+
+        }
+
 
         public static void loadDataGrid(string query, DataGridView dgv)
         {

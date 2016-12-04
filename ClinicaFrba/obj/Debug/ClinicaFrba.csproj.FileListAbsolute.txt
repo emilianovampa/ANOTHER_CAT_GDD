@@ -1,8 +1,5 @@
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\bin\Debug\ClinicaFrba.exe.config
-C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.AltaAfiliado.resources
-C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.DatosRol.resources
-C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Rolppal.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuAdministrativo.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuPpal.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.MenuProfesional.resources
@@ -19,3 +16,7 @@ C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\C
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.application
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.exe
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Alta.resources
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Editar.resources
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Eliminar.resources

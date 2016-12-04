@@ -48,7 +48,7 @@ namespace ClinicaFrba
         private void ingresarRol_Click_1(object sender, EventArgs e)
         {
 
-            UsuarioActual.Id_rol = Convert.ToInt32(comboRol.SelectedValue); // ver que estoy pasando el string y no el id
+            UsuarioActual.Id_rol = Convert.ToInt32(comboRol.SelectedValue);
             UsuarioActual.DescripcionRol= comboRol.Text;
            // string rol = comboRol.SelectedValue.ToString();
 

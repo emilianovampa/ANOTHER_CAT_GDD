@@ -93,23 +93,29 @@
     <Compile Include="Abm Planes\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Profesional\ProfesionalABM.cs">
+    <Compile Include="AbmRol\Editar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Profesional\ProfesionalABM.Designer.cs">
+    <Compile Include="AbmRol\Editar.Designer.cs">
+      <DependentUpon>Editar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\Eliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\Eliminar.Designer.cs">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ProfesionalABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ProfesionalABM.Designer.cs">
       <DependentUpon>ProfesionalABM.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\DatosRol.cs">
+    <Compile Include="AbmRol\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\DatosRol.Designer.cs">
-      <DependentUpon>DatosRol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmRol\Rolppal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\Rolppal.Designer.cs">
-      <DependentUpon>Rolppal.cs</DependentUpon>
+    <Compile Include="AbmRol\Alta.Designer.cs">
+      <DependentUpon>Alta.cs</DependentUpon>
     </Compile>
     <Compile Include="Compra Bono\ComprarBono.cs">
       <SubType>Form</SubType>
@@ -193,11 +199,14 @@
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\DatosRol.resx">
-      <DependentUpon>DatosRol.cs</DependentUpon>
+    <EmbeddedResource Include="AbmRol\Alta.resx">
+      <DependentUpon>Alta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\Rolppal.resx">
-      <DependentUpon>Rolppal.cs</DependentUpon>
+    <EmbeddedResource Include="AbmRol\Editar.resx">
+      <DependentUpon>Editar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\Eliminar.resx">
+      <DependentUpon>Eliminar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuAdministrativo.resx">
       <DependentUpon>MenuAdministrativo.cs</DependentUpon>
@@ -258,6 +267,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Abm Profesional\" />
     <Folder Include="Cancelar Atencion\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
