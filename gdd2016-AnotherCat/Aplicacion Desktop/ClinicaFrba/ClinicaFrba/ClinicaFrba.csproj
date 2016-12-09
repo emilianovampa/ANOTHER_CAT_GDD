@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D8B29F5-1F49-420C-8A45-544EC4ACDC09}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClinicaFrba</RootNamespace>
+    <AssemblyName>ClinicaFrba</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\System.configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abm Afiliado\frmAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\frmAfiliado.Designer.cs">
+      <DependentUpon>frmAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\frmHistorialModificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\frmHistorialModificaciones.Designer.cs">
+      <DependentUpon>frmHistorialModificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\frmHomeAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\frmHomeAfiliado.Designer.cs">
+      <DependentUpon>frmHomeAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Especialidades Medicas\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Especialidades Medicas\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Planes\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Profesional\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Profesional\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Usuario\homeAbmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Usuario\homeAbmUsuario.Designer.cs">
+      <DependentUpon>homeAbmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\frmAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\frmAlta.Designer.cs">
+      <DependentUpon>frmAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\frmBaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\frmBaja.Designer.cs">
+      <DependentUpon>frmBaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\frmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\frmModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\frmModificar.Designer.cs">
+      <DependentUpon>frmModificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarAtencionAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarAtencionAfiliado.Designer.cs">
+      <DependentUpon>CancelarAtencionAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarAtencionMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarAtencionMedico.Designer.cs">
+      <DependentUpon>CancelarAtencionMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compra Bono\frmCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compra Bono\frmCompra.designer.cs">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016DataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016DataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016DataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn.Designer.cs">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\frmListadoEstadistico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\frmListadoEstadistico.Designer.cs">
+      <DependentUpon>frmListadoEstadistico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedir Turno\frmPedidoTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\frmPedidoTurno.Designer.cs">
+      <DependentUpon>frmPedidoTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedir Turno\frmTurnosxProf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\frmTurnosxProf.Designer.cs">
+      <DependentUpon>frmTurnosxProf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro Agenda\CustomHour.cs" />
+    <Compile Include="Registro Agenda\RegistroAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Agenda\RegistroAgenda.Designer.cs">
+      <DependentUpon>RegistroAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Llegada\frmLlegadaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Llegada\frmLlegadaPaciente.Designer.cs">
+      <DependentUpon>frmLlegadaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Resultado\RegistroResultado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Resultado\RegistroResultado.Designer.cs">
+      <DependentUpon>RegistroResultado.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Abm Afiliado\frmAfiliado.resx">
+      <DependentUpon>frmAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\frmHistorialModificaciones.resx">
+      <DependentUpon>frmHistorialModificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\frmHomeAfiliado.resx">
+      <DependentUpon>frmHomeAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Usuario\homeAbmUsuario.resx">
+      <DependentUpon>homeAbmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\frmAlta.resx">
+      <DependentUpon>frmAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\frmBaja.resx">
+      <DependentUpon>frmBaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\frmModificar.resx">
+      <DependentUpon>frmModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarAtencionAfiliado.resx">
+      <DependentUpon>CancelarAtencionAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarAtencionMedico.resx">
+      <DependentUpon>CancelarAtencionMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compra Bono\frmCompra.resx">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\frmListadoEstadistico.resx">
+      <DependentUpon>frmListadoEstadistico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn.resx">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\frmPedidoTurno.resx">
+      <DependentUpon>frmPedidoTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\frmTurnosxProf.resx">
+      <DependentUpon>frmTurnosxProf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Registro Agenda\RegistroAgenda.resx">
+      <DependentUpon>RegistroAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Llegada\frmLlegadaPaciente.resx">
+      <DependentUpon>frmLlegadaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\RegistroResultado.resx">
+      <DependentUpon>RegistroResultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Abm Profesional\GD2C2016DataSet.xsc">
+      <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet.xss">
+      <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet1.xsc">
+      <DependentUpon>GD2C2016DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet1.xss">
+      <DependentUpon>GD2C2016DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet3.xsc">
+      <DependentUpon>GD2C2016DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet3.xss">
+      <DependentUpon>GD2C2016DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet4.xsc">
+      <DependentUpon>GD2C2016DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016DataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet4.xss">
+      <DependentUpon>GD2C2016DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet5.xsc">
+      <DependentUpon>GD2C2016DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016DataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet5.xss">
+      <DependentUpon>GD2C2016DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet6.xsc">
+      <DependentUpon>GD2C2016DataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016DataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Abm Profesional\GD2C2016DataSet6.xss">
+      <DependentUpon>GD2C2016DataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clases\Clases.csproj">
+      <Project>{6dc12838-6697-4cb1-a808-8b2f091ca3e4}</Project>
+      <Name>Clases</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\BaseDatos.csproj">
+      <Project>{7e6c5163-9514-4af8-b63b-8d4343f8f0c0}</Project>
+      <Name>BaseDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
