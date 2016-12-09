@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clases
 {
-    public class Listado_2 	//	No definido
+    public class Listado_2
     {
         public int Matricula { get; set; }
         public string Nombre { get; set; }

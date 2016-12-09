@@ -23,7 +23,6 @@ namespace Clases
         public decimal PlanUsuario { get; set; }
         public string Sexo { get; set; }
         public decimal CantidadHijos { get; set; }
-        //public bool Habilitado { get; set; }
         public decimal CantBonosUsados { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string TipoDocumento { get; set; }

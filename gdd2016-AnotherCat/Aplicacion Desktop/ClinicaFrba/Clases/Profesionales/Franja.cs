@@ -18,6 +18,6 @@ namespace Clases
         public bool Cancelada { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        //public string Afiliado { get; set; }
+
     }
 }

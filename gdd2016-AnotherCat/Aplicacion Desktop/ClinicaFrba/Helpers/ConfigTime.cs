@@ -1,8 +1,7 @@
 ﻿/*
- * Created by SharpDevelop.
- * User: Lelouch
- * Date: 15/10/2016
- * Time: 13:38
+ * User: 
+ * Date: 01/10/2016
+ * Time: 10:00
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */

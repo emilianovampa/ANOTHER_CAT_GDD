@@ -13,8 +13,6 @@ namespace Clases
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
         public DateTime Llegada { get; set; }
-        //public string Sintomas { get; set; }
-        //public string Enfermedades { get; set; }
         public int IdMedicoEspecialidad { get; set; }
         public bool Tiempo { get; set; }
     }
