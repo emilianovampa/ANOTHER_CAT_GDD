@@ -20,3 +20,5 @@ C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\C
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Alta.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Editar.resources
 C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.Eliminar.resources
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.Baja.resources
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.Modificacion.resources

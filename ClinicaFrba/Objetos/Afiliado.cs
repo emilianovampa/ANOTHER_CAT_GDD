@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace ClinicaFrba.Objetos
 {
     public class Afiliado
-    {          
+    {
+        public string UserName { get; set; }
         public decimal NroAfiliado { get; set; }
         public string Nombre { get; set; }
         public string Mail { get; set; }

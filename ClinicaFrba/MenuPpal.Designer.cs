@@ -164,6 +164,7 @@
             this.modificarAfiliado.Name = "modificarAfiliado";
             this.modificarAfiliado.Size = new System.Drawing.Size(169, 22);
             this.modificarAfiliado.Text = "Modificar Afiliado";
+            this.modificarAfiliado.Click += new System.EventHandler(this.modificarAfiliado_Click);
             // 
             // eliminarAfiliado
             // 
@@ -196,21 +197,21 @@
             // altaToolStripMenuItem
             // 
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            this.altaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.altaToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.altaToolStripMenuItem.Text = "Alta";
             this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
             // 
             // modicarToolStripMenuItem
             // 
             this.modicarToolStripMenuItem.Name = "modicarToolStripMenuItem";
-            this.modicarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modicarToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.modicarToolStripMenuItem.Text = "Modicar";
             this.modicarToolStripMenuItem.Click += new System.EventHandler(this.modicarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 

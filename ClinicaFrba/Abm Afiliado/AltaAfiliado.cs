@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Configuration;
+using System.Data.SqlClient;
 namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AltaAfiliado : Form
@@ -16,7 +17,9 @@ namespace ClinicaFrba.Abm_Afiliado
         public static int finLegajo;
         public static  int inicioLegajo;
         private static Abm_Afiliado.AltaAfiliado _instancia;
-
+        public static Objetos.Afiliado afiliadoModificar;
+       
+            
         public static Abm_Afiliado.AltaAfiliado getInstance()
         {
             if(_instancia==null)
@@ -30,7 +33,21 @@ namespace ClinicaFrba.Abm_Afiliado
         public AltaAfiliado()
         {
             InitializeComponent();
+            cargarPlanes();
+
         }
+
+        public void cargarPlanes()
+        {
+            string CMD = string.Format("SELECT ID_Plan_Medico AS idPlan, Descripcion AS planMedico from ANOTHER_CAT.tl_Plan_Medico order by Descripcion asc");
+            cPlanM.DataSource = Conexion.EjecutarComboBox(CMD);
+            cPlanM.DisplayMember = "planMedico";
+            cPlanM.ValueMember = "idPlan";
+
+        }
+
+
+
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -56,23 +73,12 @@ namespace ClinicaFrba.Abm_Afiliado
             NacAF.Text = "";
             EstadoAF.SelectedIndex = 0;
             FamAF.Text = "";
-            PlanAF.Text = "";
+            cPlanM.Text = "";
             if (Sex2.Checked == true)
             {
                 Sex1.Checked = true;
             }
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            monthCalendar1.Show();
-        }
-
-        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
-        {
-            NacAF.Text = monthCalendar1.SelectionRange.Start.ToShortDateString();
-            monthCalendar1.Hide();
         }
 
         private void AltaAfiliado_FormClosed(object sender, FormClosedEventArgs e)
@@ -112,7 +118,12 @@ namespace ClinicaFrba.Abm_Afiliado
                     
                     finLegajo++;  //Pasa a ser 2
                     Abm_Afiliado.AltaAfiliado conyuge = new Abm_Afiliado.AltaAfiliado();
+                    conyuge.FamAF.ReadOnly = true;
+                    conyuge.FamAF.Text = "0";
+
                     conyuge.ShowDialog();
+                    
+
                     //Verifico si ademas posee familiares a cargo y si es asi, voy a aumentar cada vez que acepte afiliar a uno
                     if (cantidadFamiliares != 0)
                     {
@@ -123,6 +134,8 @@ namespace ClinicaFrba.Abm_Afiliado
                             {
                                
                                 Abm_Afiliado.AltaAfiliado familiar = new Abm_Afiliado.AltaAfiliado();
+                                familiar.FamAF.ReadOnly = true;
+                                familiar.FamAF.Text = "0";
                                 finLegajo++;
                                 familiar.ShowDialog();
 
@@ -211,32 +224,40 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void guardarAfiliado()
         {
+            afiliadoModificar = new Objetos.Afiliado();
+            afiliadoModificar.Sexo = "M";
 
             string legajo = inicioLegajo.ToString() + "0" + finLegajo.ToString();
             //Guardar en la base de datos armando la consulta con el codigo de afiliado
+            DateTime dateValue = new DateTime(2008, 6, 11);
 
-            //var afiliado = new Dictionary<string, object>()
-            //        {
-                   
-            //            { "@Username", txtNombre.Text+txtApellido.Text+txtDni.Text.ToString()},
-            //            { "@Nombre", txtNombre.Text },
-            //            {"@TipoDocumento", tipodni},
-            //            { "@Apellido", txtApellido.Text },
-            //            { "@Dni", Convert.ToInt32(txtDni.Text)  },
-            //            { "@Mail",  txtMail.Text  },
-            //            { "@Telefono", txtTelefono.Text  },
-            //            { "@Direccion",txtDireccion.Text  },
-            //            { "@CantHijos",  0 },
-            //            { "@EstadoCivil", cmbEstadoCivil.Text.Substring(0,1)},
-            //            { "@Fecha", dtpFecha.Value},
-            //            { "@Plan", Convert.ToDecimal(planElegido.Id) },
-            //            { "@Sexo", cmbSexo.Text.Substring(0,1)},
-            //        };
+            if (Sex2.Checked == true)
+            {
+                afiliadoModificar.Sexo="F";
+                
+            }
+            var afiliado = new Dictionary<string, object>()
+                    {
+                         { "@Username", DocAF.Text},
+                        { "@nAfiliado", legajo},
+                        { "@nombre", NombreAF.Text },
+                        { "@mail",  MailAF.Text  },
+                        { "@telefono", Convert.ToInt32(TelAF.Text ) },
+                        { "@direccion",DomAF.Text },
+                        { "@apellido", ApellidoAF.Text },
+                        { "@dni", Convert.ToInt32(DocAF.Text)  },
+                        { "@estadocivil", EstadoAF.SelectedText},
+                        { "@plan", cPlanM.SelectedValue },
+                        { "@sexo",afiliadoModificar.Sexo }, 
+                        { "@canthijos",  Convert.ToInt32(FamAF.Text) },
+                        { "@fecha", NacAF.Value},
+                        {"@tipodocumento", TipoAF.Text},
+                    };
 
-            //if (Alta(afiliado))
-            //{
-            //    Close();
-            //}
+            if (Alta(afiliado))
+            {
+                //Close();
+            }
 
             MessageBox.Show("¡Ehnorabuena, se ha añadido un nuevo afiliado! "+ "Legajo: "+ legajo, "¡Congratulations!", MessageBoxButtons.OK);
 
@@ -251,21 +272,48 @@ namespace ClinicaFrba.Abm_Afiliado
             this.Close();
         }
 
+        private void TelAF_TextChanged(object sender, EventArgs e)
+        {
 
-        //private bool Alta(Dictionary<string, object> afiliado)
-        //{
-        //    try
-        //    {
-        //        //ConexionesDB.ExecuteNonQuery("Afiliado_Add", afiliado);
-        //        //ConexionesDB.ExecuteNonQuery("Hijos_En_Cero", new Dictionary<string, object> { { "@username", txtNombre.Text + txtApellido.Text + txtDni.Text.ToString() } });
-        //    }
-        //    catch
-        //    {
-        //        MessageBox.Show("No se pudo agregar el afiliado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false;
-        //    }
+        }
 
-        //}
+
+        private bool Alta(Dictionary<string, object> afiliado)
+        {
+
+            //SqlConnection ConexionesDB = Conexion.ObtenerConexion();
+            //Conexion.ExecuteNonQuery("Afiliado_Add", afiliado);
+            //return false;
+
+            try
+            {
+                SqlConnection ConexionesDB = Conexion.ObtenerConexion();
+                Conexion.ExecuteNonQuery("Afiliado_Add", afiliado);
+                return true;
+
+            }
+            catch
+            {
+                MessageBox.Show("No se pudo agregar el afiliado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+        }
+
+        private void Sex1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NacAF_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cPlanM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

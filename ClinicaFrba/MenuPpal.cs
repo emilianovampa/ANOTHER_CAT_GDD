@@ -76,6 +76,13 @@ namespace ClinicaFrba
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+            //Solo permitido cargar de a un solo afiliado principal, una vez terminado se puede agregar otro
+            Abm_Afiliado.AltaAfiliado nuevoAfiliado = Abm_Afiliado.AltaAfiliado.getInstance();
+            //Genero el ultimo indice del afiliado
+            Abm_Afiliado.AltaAfiliado.finLegajo = 1;
+            Random aleatorio = new Random();
+            Abm_Afiliado.AltaAfiliado.inicioLegajo = aleatorio.Next(0, 1000);
+            nuevoAfiliado.Show(this);
         }
 
         private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +145,13 @@ namespace ClinicaFrba
         
             AbmRolElim.Show();
 
+        }
+
+        private void modificarAfiliado_Click(object sender, EventArgs e)
+        {
+            Abm_Afiliado.Modificacion ABMafiliadoMod = new Abm_Afiliado.Modificacion();
+            ABMafiliadoMod.MdiParent = this;
+            ABMafiliadoMod.Show();
         }
     }
 }

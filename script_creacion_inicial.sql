@@ -185,6 +185,7 @@ CREATE TABLE ANOTHER_CAT.tl_Afiliado (
 	Habilitado BIT NOT NULL DEFAULT 1,
 	Cant_Hijos BIGINT NOT NULL DEFAULT 0,
 	Numero_Consulta_Medica BIGINT NOT NULL DEFAULT 0,
+	Fecha_baja DATETIME NOT NULL DEFAULT 0,
 		PRIMARY KEY (ID_Afiliado)
 )
 GO
@@ -709,7 +710,7 @@ SELECT (SELECT ID_Usuario FROM ANOTHER_CAT.tl_Usuario AS P WHERE P.Nro_Documento
 FROM gd_esquema.Maestra M;
 
 INSERT INTO ANOTHER_CAT.tl_Turno (ID_Turno, Fecha, ID_Profesional, ID_Afiliado, ID_Especialidad)
-SELECT Nro_Turno, Fecha_Turno, ID_Profesional, ID_Afiliado, ID_Especialidad
+SELECT distinct (Nro_Turno), Fecha_Turno, ID_Profesional, ID_Afiliado, ID_Especialidad
 FROM @MIGRACION_CONSULTA
 WHERE (Sintomas IS NULL AND Fecha_Compra IS NULL AND Nro_Turno IS NOT NULL);
 

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClinicaFrba.exe" size="77824">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClinicaFrba.exe" size="89088">
       <assemblyIdentity name="ClinicaFrba" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>c+e5uFXfH/pUm3rkSC6i8UtpJZXiEc4IAp6xEnqH/Gw=</dsig:DigestValue>
+        <dsig:DigestValue>cCT3kDK3X80wrf+2PVCGSXfCtzk8yO4J8ope+tVUBek=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -105,12 +105,14 @@ namespace ClinicaFrba
         public static void ExecuteNonQuery(string SP, Dictionary<string, object> parametros = null)
         {
             if (parametros == null) parametros = new Dictionary<string, object>();
-            if (DB != null && DB.State == ConnectionState.Open)
-            {
-                DB.Close();
-            }
-            DB.Open();
-            SqlCommand command = new SqlCommand("NOT_NULL." + SP, DB);
+            //if (DB != null && DB.State == ConnectionState.Open)
+            //{
+            //    DB.Close();
+            //}
+            //DB.Open();
+            SqlConnection conexionBase = Conexion.ObtenerConexion();
+            //SqlCommand command = new SqlCommand("ANOTHER_CAT." + SP, DB);
+            SqlCommand command = new SqlCommand("ANOTHER_CAT." + SP, conexionBase);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             foreach (var parametro in parametros)
             {
@@ -118,7 +120,8 @@ namespace ClinicaFrba
             }
 
             command.ExecuteNonQuery();
-            DB.Close();
+            conexionBase.Close();
+            //DB.Close();
 
 
 
