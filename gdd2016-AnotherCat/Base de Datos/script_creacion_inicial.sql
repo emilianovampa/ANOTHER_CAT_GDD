@@ -1,4 +1,4 @@
-use GD2C2016use GD2C2016
+use GD2C2016 
 go
 
 create schema ANOTHER_CAT authorization gd
@@ -580,7 +580,7 @@ go
 
 set nocount on;
 insert into ANOTHER_CAT.bono_consulta (bono_id, bono_afiliado, bono_plan, bono_fecha_compra, bono_utilizado )
-select distinct Bono_Consulta_Numero, afiliado_nro, Plan_Med_Codigo, Compra_Bono_Fecha, 'S'
+select distinct (Bono_Consulta_Numero), afiliado_nro, Plan_Med_Codigo, Compra_Bono_Fecha, 'S'
 	from gd_esquema.Maestra, ANOTHER_CAT.afiliado
 	where Bono_Consulta_Numero is not null and Compra_Bono_Fecha is not null and afiliado_dni = Paciente_Dni
 	order by Bono_Consulta_Numero, Paciente_Dni, Plan_Med_Codigo, Compra_Bono_Fecha

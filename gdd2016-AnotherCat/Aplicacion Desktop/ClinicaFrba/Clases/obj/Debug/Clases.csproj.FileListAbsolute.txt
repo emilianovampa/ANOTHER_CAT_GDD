@@ -20,3 +20,8 @@ D:\Descargas\gdd2016-master\gdd2016-master\Aplicacion Desktop\ClinicaFrba\Clases
 D:\Descargas\gdd2016-master\gdd2016-master\Aplicacion Desktop\ClinicaFrba\Clases\obj\Debug\Clases.csprojResolveAssemblyReference.cache
 D:\Descargas\gdd2016-master\gdd2016-master\Aplicacion Desktop\ClinicaFrba\Clases\obj\Debug\Clases.dll
 D:\Descargas\gdd2016-master\gdd2016-master\Aplicacion Desktop\ClinicaFrba\Clases\obj\Debug\Clases.pdb
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\gdd2016-AnotherCat\Aplicacion Desktop\ClinicaFrba\Clases\bin\Debug\Clases.dll
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\gdd2016-AnotherCat\Aplicacion Desktop\ClinicaFrba\Clases\bin\Debug\Clases.pdb
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\gdd2016-AnotherCat\Aplicacion Desktop\ClinicaFrba\Clases\obj\Debug\Clases.csprojResolveAssemblyReference.cache
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\gdd2016-AnotherCat\Aplicacion Desktop\ClinicaFrba\Clases\obj\Debug\Clases.dll
+C:\Users\elturko\Documents\Nueva carpeta\ANOTHER_CAT_GDD\gdd2016-AnotherCat\Aplicacion Desktop\ClinicaFrba\Clases\obj\Debug\Clases.pdb
