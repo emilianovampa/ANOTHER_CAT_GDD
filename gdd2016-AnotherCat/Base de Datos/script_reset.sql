@@ -2,68 +2,68 @@ use GD2C2016
 GO
 
 --Saco todas las constraints
-ALTER TABLE NOT_NULL.bono_consulta NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.bono_consulta NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.turno NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.turno NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.funcionXrol NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.funcionXrol NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.rolXusuario NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.rolXusuario NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.funcion NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.funcion NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.rol NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.rol NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.franja_horaria NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.franja_horaria NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.agenda NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.agenda NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.medicoXespecialidad NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.medicoXespecialidad NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.especialidad NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.especialidad NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.tipo_especialidad NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.tipo_especialidad NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.modificacion_plan NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.modificacion_plan NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.cancelacion_turno NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.cancelacion_turno NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.profesional NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.profesional NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.compra_bono NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.compra_bono NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.afiliado NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.afiliado NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.usuario NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.usuario NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.plan_medico NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.plan_medico NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.modificacion_plan NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.modificacion_plan NOCHECK CONSTRAINT ALL
 GO
-ALTER TABLE NOT_NULL.turno NOCHECK CONSTRAINT ALL
+ALTER TABLE ANOTHER_CAT.turno NOCHECK CONSTRAINT ALL
 GO
 
 /*Lo hago aca xq turno referencia a medXesp */
-DROP TABLE NOT_NULL.baja_afiliado
+DROP TABLE ANOTHER_CAT.baja_afiliado
 GO
 
-DROP TABLE NOT_NULL.franja_horaria
+DROP TABLE ANOTHER_CAT.franja_horaria
 GO
 
-DROP TABLE NOT_NULL.agenda
+DROP TABLE ANOTHER_CAT.agenda
 GO
-DROP TABLE NOT_NULL.bono_consulta
+DROP TABLE ANOTHER_CAT.bono_consulta
 GO
-DROP TABLE NOT_NULL.cancelacion_turno
+DROP TABLE ANOTHER_CAT.cancelacion_turno
 GO
-DROP TABLE NOT_NULL.consulta
+DROP TABLE ANOTHER_CAT.consulta
 GO
-DROP TABLE NOT_NULL.turno
+DROP TABLE ANOTHER_CAT.turno
 GO
 /*drop tablas relacion*/
-DROP TABLE NOT_NULL.funcionXrol
+DROP TABLE ANOTHER_CAT.funcionXrol
 GO
-DROP TABLE NOT_NULL.rolXusuario
+DROP TABLE ANOTHER_CAT.rolXusuario
 GO
 
 
@@ -71,145 +71,145 @@ GO
 
 
 /*Tablas que quedaron colgando de la relacion*/
-DROP TABLE NOT_NULL.funcion
+DROP TABLE ANOTHER_CAT.funcion
 GO
 
-DROP TABLE NOT_NULL.rol
+DROP TABLE ANOTHER_CAT.rol
 GO
 
-DROP TABLE NOT_NULL.medicoXespecialidad
+DROP TABLE ANOTHER_CAT.medicoXespecialidad
 GO
 
-DROP TABLE NOT_NULL.especialidad
+DROP TABLE ANOTHER_CAT.especialidad
 GO
 
-DROP TABLE NOT_NULL.tipo_especialidad
+DROP TABLE ANOTHER_CAT.tipo_especialidad
 GO
 /* ***************************************** */
 
-DROP TABLE NOT_NULL.modificacion_plan
+DROP TABLE ANOTHER_CAT.modificacion_plan
 GO
 
 
-DROP TABLE NOT_NULL.profesional
+DROP TABLE ANOTHER_CAT.profesional
 GO
 
-DROP TABLE NOT_NULL.compra_bono
+DROP TABLE ANOTHER_CAT.compra_bono
 GO
 
-DROP TABLE NOT_NULL.afiliado
+DROP TABLE ANOTHER_CAT.afiliado
 GO
 
-DROP TABLE NOT_NULL.usuario
+DROP TABLE ANOTHER_CAT.usuario
 GO
 
-DROP TABLE NOT_NULL.plan_medico
+DROP TABLE ANOTHER_CAT.plan_medico
 GO
 
-DROP TABLE NOT_NULL.Fecha_Config
+DROP TABLE ANOTHER_CAT.Fecha_Config
 GO
 
-DROP procedure NOT_NULL.asignar_nro_bonos_afiliado
+DROP procedure ANOTHER_CAT.asignar_nro_bonos_afiliado
 GO
 
-DROP procedure NOT_NULL.Usuario_Get
+DROP procedure ANOTHER_CAT.Usuario_Get
 GO
 
-DROP procedure NOT_NULL.Usuario_ResetearIntentos
+DROP procedure ANOTHER_CAT.Usuario_ResetearIntentos
 GO
 
-DROP procedure NOT_NULL.Usuario_SumarIntento
+DROP procedure ANOTHER_CAT.Usuario_SumarIntento
 GO
 
-DROP procedure NOT_NULL.Usuario_GetAll
+DROP procedure ANOTHER_CAT.Usuario_GetAll
 
-DROP procedure NOT_NULL.Usuario_LogIn
+DROP procedure ANOTHER_CAT.Usuario_LogIn
 
-DROP procedure NOT_NULL.UsuarioXRol_GetRolesByUser
-drop procedure NOT_NULL.Afiliado_Obtener_Nro
-drop procedure NOT_NULL.Afiliado_Add
-drop procedure NOT_NULL.Afiliado_GetAll
-drop procedure NOT_NULL.Afiliado_GetAfiliadoSegunUsuario
-drop procedure NOT_NULL.Afiliado_GetByDni
-drop procedure NOT_NULL.Afiliado_GetByFilters
-drop procedure NOT_NULL.Afiliado_Modify
-drop procedure NOT_NULL.Bonos_GetBonosSegunAfiliado
-drop procedure NOT_NULL.Funciones_GetAll
-drop procedure NOT_NULL.Profesional_Add
-drop procedure NOT_NULL.Profesional_GetByDni
-drop procedure NOT_NULL.Profesional_GetByFilters
-drop procedure NOT_NULL.Profesional_GetProfesionalSegunUsuario
-drop procedure NOT_NULL.Profesional_Modify
-drop procedure NOT_NULL.Profesionales_GetAll
-drop procedure NOT_NULL.Rol_Activate
-drop procedure NOT_NULL.Rol_Add
-drop procedure NOT_NULL.Rol_Deactivate
-drop procedure NOT_NULL.Rol_Exists
-drop procedure NOT_NULL.Rol_GetAll
-drop procedure NOT_NULL.Rol_GetByName
-drop procedure NOT_NULL.Rol_ModifyName
-drop procedure NOT_NULL.RolXFuncion_Add
-drop procedure NOT_NULL.RolXFuncion_GetFunByRol
-drop procedure NOT_NULL.RolXFuncion_Remove
-drop procedure NOT_NULL.Usuario_Activo
-drop procedure NOT_NULL.Usuario_Add
-drop procedure NOT_NULL.Usuario_CambiarContrasenia
-drop procedure NOT_NULL.Usuario_Habilitar
-drop procedure NOT_NULL.Usuario_Inhabilitar
-drop procedure NOT_NULL.RolXFuncion_Active
-drop procedure NOT_NULL.Planes_GetAll
-drop procedure NOT_NULL.Agregar_Modif_Plan
-drop procedure NOT_NULL.Planes_GetPlanAfiliado
-drop procedure NOT_NULL.Planes_GetPorId
-drop procedure NOT_NULL.Usuario_Exists
-drop procedure NOT_NULL.Modif_Plan_Get_All
-drop procedure NOT_NULL.Afiliado_Baja_Logica
-drop procedure NOT_NULL.RolXUsuario_Activate
-drop procedure NOT_NULL.UsuarioXRol_GetRolesInhabxUser
-drop procedure NOT_NULL.Afiliado_Agregar_Familiar
-drop procedure NOT_NULL.Hijos_En_Cero
-drop procedure NOT_NULL.Especialidad_GetByMatricula
-drop procedure NOT_NULL.Afiliado_MismoDni
-drop procedure NOT_NULL.Get_MedicoXEsp_All
-drop procedure NOT_NULL.Get_Especialidades_All
-drop procedure NOT_NULL.Get_Especialidades_All_2
-drop procedure NOT_NULL.Get_Turnos_Today
-drop procedure NOT_NULL.Agenda_Agregar
-drop procedure NOT_NULL.Turno_Agregar
-drop procedure NOT_NULL.Get_medxesp_id
-drop procedure NOT_NULL.Franja_Agregar
-drop procedure NOT_NULL.turnos_GetByFilerProfesional
-drop procedure NOT_NULL.profesional_GetByFilerEspecialidad
-drop procedure NOT_NULL.Comprar_Bono
-drop PROCEDURE NOT_NULL.listado_Mas_Cancelaciones_Especialidad 
-drop PROCEDURE NOT_NULL.listado_Mas_Cancelaciones_Especialidad_Afiliado
-drop PROCEDURE NOT_NULL.listado_Mas_Cancelaciones_Especialidad_Profesional
-drop PROCEDURE NOT_NULL.listado_Profesionales_Consultados
-drop PROCEDURE NOT_NULL.listado_Profesionales_Menos_Horas 
-drop PROCEDURE NOT_NULL.listado_Afiliado_Mas_Bonos
-drop PROCEDURE NOT_NULL.listado_Especialidad_Mas_Bonos
-drop procedure NOT_NULL.Afiliado_GetAfiliadoSegunNro
-drop procedure NOT_NULL.Get_Especialidades_Sin_Agenda
-drop procedure NOT_NULL.GetTurnosDiaLlegaron
-drop procedure NOT_NULL.Registrar_Resultado
-drop procedure NOT_NULL.Get_Turnos_Prof_Reservados
-drop procedure NOT_NULL.especialidades_GetByFilerEspecialidad
-drop procedure NOT_NULL.Get_Bonos_Afiliado
-drop procedure NOT_NULL.Registrar_Llegada
-drop procedure NOT_NULL.Cancelar_Turno_Afiliado
-drop procedure NOT_NULL.Turnos_Afiliado
-drop procedure NOT_NULL.Get_Dias_Turno_Prof
-drop procedure NOT_NULL.Get_Franjas_Profesional
-drop procedure NOT_NULL.Cancelar_Turnos_Profesional
-drop procedure NOT_NULL.Cancelar_Turnos_ProfxFranja 
-drop procedure NOT_NULL.Cancelar_Turnos_Varios_Dias 
-drop procedure NOT_NULL.reservarTurno_GetByFilerProfesional
-drop procedure NOT_NULL.Turnos_Afiliado_Mayor
-DROP PROCEDURE NOT_NULL.Reestablecer_Fecha
-DROP FUNCTION NOT_NULL.Obtener_Fecha
-/*DROP PROCEDURE NOT_NULL.Agregar_Franja_A_Todos_Los_Medicos*/
-DROP PROCEDURE NOT_NULL.Obtener_Horas_Profesional
-DROP PROCEDURE NOT_NULL.Borrar_Franjas_Agenda
-DROP PROCEDURE NOT_NULL.Asignar_agendas
-DROP SCHEMA NOT_NULL
+DROP procedure ANOTHER_CAT.UsuarioXRol_GetRolesByUser
+drop procedure ANOTHER_CAT.Afiliado_Obtener_Nro
+drop procedure ANOTHER_CAT.Afiliado_Add
+drop procedure ANOTHER_CAT.Afiliado_GetAll
+drop procedure ANOTHER_CAT.Afiliado_GetAfiliadoSegunUsuario
+drop procedure ANOTHER_CAT.Afiliado_GetByDni
+drop procedure ANOTHER_CAT.Afiliado_GetByFilters
+drop procedure ANOTHER_CAT.Afiliado_Modify
+drop procedure ANOTHER_CAT.Bonos_GetBonosSegunAfiliado
+drop procedure ANOTHER_CAT.Funciones_GetAll
+drop procedure ANOTHER_CAT.Profesional_Add
+drop procedure ANOTHER_CAT.Profesional_GetByDni
+drop procedure ANOTHER_CAT.Profesional_GetByFilters
+drop procedure ANOTHER_CAT.Profesional_GetProfesionalSegunUsuario
+drop procedure ANOTHER_CAT.Profesional_Modify
+drop procedure ANOTHER_CAT.Profesionales_GetAll
+drop procedure ANOTHER_CAT.Rol_Activate
+drop procedure ANOTHER_CAT.Rol_Add
+drop procedure ANOTHER_CAT.Rol_Deactivate
+drop procedure ANOTHER_CAT.Rol_Exists
+drop procedure ANOTHER_CAT.Rol_GetAll
+drop procedure ANOTHER_CAT.Rol_GetByName
+drop procedure ANOTHER_CAT.Rol_ModifyName
+drop procedure ANOTHER_CAT.RolXFuncion_Add
+drop procedure ANOTHER_CAT.RolXFuncion_GetFunByRol
+drop procedure ANOTHER_CAT.RolXFuncion_Remove
+drop procedure ANOTHER_CAT.Usuario_Activo
+drop procedure ANOTHER_CAT.Usuario_Add
+drop procedure ANOTHER_CAT.Usuario_CambiarContrasenia
+drop procedure ANOTHER_CAT.Usuario_Habilitar
+drop procedure ANOTHER_CAT.Usuario_Inhabilitar
+drop procedure ANOTHER_CAT.RolXFuncion_Active
+drop procedure ANOTHER_CAT.Planes_GetAll
+drop procedure ANOTHER_CAT.Agregar_Modif_Plan
+drop procedure ANOTHER_CAT.Planes_GetPlanAfiliado
+drop procedure ANOTHER_CAT.Planes_GetPorId
+drop procedure ANOTHER_CAT.Usuario_Exists
+drop procedure ANOTHER_CAT.Modif_Plan_Get_All
+drop procedure ANOTHER_CAT.Afiliado_Baja_Logica
+drop procedure ANOTHER_CAT.RolXUsuario_Activate
+drop procedure ANOTHER_CAT.UsuarioXRol_GetRolesInhabxUser
+drop procedure ANOTHER_CAT.Afiliado_Agregar_Familiar
+drop procedure ANOTHER_CAT.Hijos_En_Cero
+drop procedure ANOTHER_CAT.Especialidad_GetByMatricula
+drop procedure ANOTHER_CAT.Afiliado_MismoDni
+drop procedure ANOTHER_CAT.Get_MedicoXEsp_All
+drop procedure ANOTHER_CAT.Get_Especialidades_All
+drop procedure ANOTHER_CAT.Get_Especialidades_All_2
+drop procedure ANOTHER_CAT.Get_Turnos_Today
+drop procedure ANOTHER_CAT.Agenda_Agregar
+drop procedure ANOTHER_CAT.Turno_Agregar
+drop procedure ANOTHER_CAT.Get_medxesp_id
+drop procedure ANOTHER_CAT.Franja_Agregar
+drop procedure ANOTHER_CAT.turnos_GetByFilerProfesional
+drop procedure ANOTHER_CAT.profesional_GetByFilerEspecialidad
+drop procedure ANOTHER_CAT.Comprar_Bono
+drop PROCEDURE ANOTHER_CAT.listado_Mas_Cancelaciones_Especialidad 
+drop PROCEDURE ANOTHER_CAT.listado_Mas_Cancelaciones_Especialidad_Afiliado
+drop PROCEDURE ANOTHER_CAT.listado_Mas_Cancelaciones_Especialidad_Profesional
+drop PROCEDURE ANOTHER_CAT.listado_Profesionales_Consultados
+drop PROCEDURE ANOTHER_CAT.listado_Profesionales_Menos_Horas 
+drop PROCEDURE ANOTHER_CAT.listado_Afiliado_Mas_Bonos
+drop PROCEDURE ANOTHER_CAT.listado_Especialidad_Mas_Bonos
+drop procedure ANOTHER_CAT.Afiliado_GetAfiliadoSegunNro
+drop procedure ANOTHER_CAT.Get_Especialidades_Sin_Agenda
+drop procedure ANOTHER_CAT.GetTurnosDiaLlegaron
+drop procedure ANOTHER_CAT.Registrar_Resultado
+drop procedure ANOTHER_CAT.Get_Turnos_Prof_Reservados
+drop procedure ANOTHER_CAT.especialidades_GetByFilerEspecialidad
+drop procedure ANOTHER_CAT.Get_Bonos_Afiliado
+drop procedure ANOTHER_CAT.Registrar_Llegada
+drop procedure ANOTHER_CAT.Cancelar_Turno_Afiliado
+drop procedure ANOTHER_CAT.Turnos_Afiliado
+drop procedure ANOTHER_CAT.Get_Dias_Turno_Prof
+drop procedure ANOTHER_CAT.Get_Franjas_Profesional
+drop procedure ANOTHER_CAT.Cancelar_Turnos_Profesional
+drop procedure ANOTHER_CAT.Cancelar_Turnos_ProfxFranja 
+drop procedure ANOTHER_CAT.Cancelar_Turnos_Varios_Dias 
+drop procedure ANOTHER_CAT.reservarTurno_GetByFilerProfesional
+drop procedure ANOTHER_CAT.Turnos_Afiliado_Mayor
+DROP PROCEDURE ANOTHER_CAT.Reestablecer_Fecha
+DROP FUNCTION ANOTHER_CAT.Obtener_Fecha
+/*DROP PROCEDURE ANOTHER_CAT.Agregar_Franja_A_Todos_Los_Medicos*/
+DROP PROCEDURE ANOTHER_CAT.Obtener_Horas_Profesional
+DROP PROCEDURE ANOTHER_CAT.Borrar_Franjas_Agenda
+DROP PROCEDURE ANOTHER_CAT.Asignar_agendas
+DROP SCHEMA ANOTHER_CAT
 GO
