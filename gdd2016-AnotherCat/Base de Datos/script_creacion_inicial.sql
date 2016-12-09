@@ -1,17 +1,17 @@
 use GD2C2016
 go
 
-create schema NOT_NULL authorization gd
+create schema ANOTHER_CAT authorization gd
 go
 set nocount on;
 /*USUARIO*/
-CREATE TABLE NOT_NULL.usuario(
+CREATE TABLE ANOTHER_CAT.usuario(
 	usuario_id varchar(50) NOT NULL,
 	usuario_password varchar(300) NULL,
 	usuario_descripcion varchar(50) NULL,
 	usuario_habilitado bit NULL,
 	usuario_cant_intentos int NULL,
- CONSTRAINT [PK_NOT_NULL.usuario] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ANOTHER_CAT.usuario] PRIMARY KEY CLUSTERED 
 (
 	[usuario_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -20,7 +20,7 @@ CREATE TABLE NOT_NULL.usuario(
 GO
 
 /*FUNCION*/
-CREATE TABLE NOT_NULL.funcion(
+CREATE TABLE ANOTHER_CAT.funcion(
 	funcion_id int NOT NULL IDENTITY(1,1),
 	funcion_descripcion varchar(50) NULL,
  CONSTRAINT [PK_funcion] PRIMARY KEY CLUSTERED 
@@ -32,7 +32,7 @@ CREATE TABLE NOT_NULL.funcion(
 GO
 
 /*ROL*/
-CREATE TABLE NOT_NULL.rol(
+CREATE TABLE ANOTHER_CAT.rol(
 	rol_id int NOT NULL IDENTITY(1,1),
 	rol_descripcion varchar(50) NULL,
 	rol_habilitado bit NOT NULL default(1),
@@ -44,7 +44,7 @@ CREATE TABLE NOT_NULL.rol(
 
 GO
 --Creo los roles existentes
-Insert INTO NOT_NULL.Rol(rol_descripcion)
+Insert INTO ANOTHER_CAT.Rol(rol_descripcion)
   VALUES ('Administrador'), ('Afiliado'), ('Profesional')
 GO
 
@@ -963,7 +963,7 @@ GO
 	END
   GO
 
-  --CAMBIAR CONTRASEÑA DE USUARIO
+  --CAMBIAR CONTRASEÃ‘A DE USUARIO
   CREATE PROCEDURE NOT_NULL.Usuario_CambiarContrasenia(@Username varchar(50), @Password varchar(20), @cambiada int output)
   AS
 	BEGIN
@@ -1462,7 +1462,7 @@ CREATE PROCEDURE NOT_NULL.especialidades_GetByFilerEspecialidad (@especialidad v
   GO
 
 
-  --	Top 5 de las especialidades que más se registraron cancelaciones, tanto de afiliados como de profesionales.
+  --	Top 5 de las especialidades que mÃ¡s se registraron cancelaciones, tanto de afiliadosÂ comoÂ deÂ profesionales.
   --	No testeado
 CREATE PROCEDURE NOT_NULL.listado_Mas_Cancelaciones_Especialidad (@fecha1 datetime, @fecha2 datetime)
 as
@@ -1505,7 +1505,7 @@ go
 
 
 
-  --           Top 5 de los profesionales más consultados por Plan, detallando también bajo que Especialidad
+  --           Top 5 de los profesionales mÃ¡s consultados por Plan, detallando tambiÃ©n bajo queÂ Especialidad
 CREATE PROCEDURE NOT_NULL.listado_Profesionales_Consultados (@fecha1 datetime, @fecha2 datetime, @plan varchar(255))
 as
 	begin
@@ -1536,7 +1536,7 @@ as
 go
 
 
---		Top 5 de los afiliados con mayor cantidad de bonos comprados, detallando si pertenece a un grupo familiar
+--		Top 5 de los afiliados con mayor cantidad de bonos comprados, detallando si perteneceÂ aÂ unÂ grupoÂ familiar
  CREATE PROCEDURE NOT_NULL.listado_Afiliado_Mas_Bonos (@fecha1 datetime, @fecha2 datetime)			
  as
 	Begin
@@ -1553,7 +1553,7 @@ go
  go
 
 
---		Top 5 de las especialidades de médicos con más bonos de consultas utilizados
+--		Top 5 de las especialidades de mÃ©dicos con mÃ¡s bonos de consultas utilizados
  CREATE PROCEDURE NOT_NULL.listado_Especialidad_Mas_Bonos (@fecha1 datetime, @fecha2 datetime)
  as
 	Begin
