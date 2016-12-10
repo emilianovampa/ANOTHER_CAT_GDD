@@ -20,8 +20,8 @@ namespace ClinicaFrba.Registro_Agenda
 	public partial class RegistroAgenda : Form
 	{
 		Profesional profesional;
-		TextBox[,] matriz = new TextBox[4,6];
-		CustomHour[,] matrizHoras = new CustomHour[4,6];
+		TextBox[,] matriz = new TextBox[2,6];
+		CustomHour[,] matrizHoras = new CustomHour[2,6];
         public bool conIntervalo = false;
         public bool sinEspecialidades = false;
         public RegistroAgenda(Profesional profesional)
@@ -121,7 +121,7 @@ namespace ClinicaFrba.Registro_Agenda
             ConexionesDB.DB.Open();
 			bool transaccionFallida = false;
 			int i,j;
-			for(i=0;i<4;i=i+2){
+			for(i=0;i<1;i=i+1){
 				for(j=0;j<6;j++){
 					if(matrizHoras[i,j] != null){
 						parametros = new Dictionary<string, object>(){
@@ -130,8 +130,8 @@ namespace ClinicaFrba.Registro_Agenda
 							{"@dia",j},
 							{"@hora_inicio",matrizHoras[i,j].hora},
 							{"@minuto_inicio",matrizHoras[i,j].minuto},
-							{"@hora_fin",matrizHoras[i+1,j].hora},
-							{"@minuto_fin",matrizHoras[i+1,j].minuto},
+                            {"@hora_fin",matrizHoras[i+1,j].hora},
+                            {"@minuto_fin",matrizHoras[i+1,j].minuto},
 						};
 						
 						if(ConexionesDB.ExecuteNonQueryWithReturn("Franja_Agregar",parametros) != 0)
@@ -163,9 +163,9 @@ namespace ClinicaFrba.Registro_Agenda
 					if(matrizHoras[0,indice] != null){
 						generarTurnos(matrizHoras[0,indice],matrizHoras[1,indice],fecha);
 					}
-					if(matrizHoras[2,indice] != null){
-						generarTurnos(matrizHoras[2,indice],matrizHoras[3,indice],fecha);
-					}
+                    //if(matrizHoras[2,indice] != null){
+                    //    generarTurnos(matrizHoras[2,indice],matrizHoras[3,indice],fecha);
+                    //}
 				}
 			}
             MessageBox.Show("Se realizaron los turnos", "Turnos Realizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -219,7 +219,7 @@ namespace ClinicaFrba.Registro_Agenda
 			
 			bool errorTextBox = false;
 			int i,j;
-			for(i=0;i<4;i=i+2){ //Solo checkeo las filas pares
+			for(i=0;i<2;i=i+1){ //Solo checkeo las filas pares
 				for(j=0;j<6;j++){
 					
 					if( !textBoxCorrecta(i,j) ){
@@ -230,28 +230,28 @@ namespace ClinicaFrba.Registro_Agenda
 			}
 			
 			//Hago la validacion para ver que no se crucen las horas
-			bool horaCruzada = false;
-			if(resultado){
+            //bool horaCruzada = false;
+            //if(resultado){
 				
-				for(j=0;j<6;j++){
+            //    for(j=0;j<6;j++){
 					
-					if(matrizHoras[0,j] != null && matrizHoras[2,j] != null){
-						if( matrizHoras[1,j].esDespues(matrizHoras[2,j]) ){
-							resultado = false;
-							horaCruzada = true;
-						}
-					}
-				}
-			}
+            //        if(matrizHoras[0,j] != null && matrizHoras[2,j] != null){
+            //            if( matrizHoras[1,j].esDespues(matrizHoras[2,j]) ){
+            //                resultado = false;
+            //                horaCruzada = true;
+            //            }
+            //        }
+            //    }
+            //}
 			
 			//Valido que el total de horas no supere 48
 			bool totalHorasMayorA48 = false;
 			if(resultado){
 				
-				for(i=0;i<4;i=i+2){
+				for(i=0;i<2;i=i+1){
 				for(j=0;j<6;j++){
 					if(matrizHoras[i,j] != null)
-						horasTotales += matrizHoras[i+1,j].toMinutes() - matrizHoras[i,j].toMinutes();
+						horasTotales += matrizHoras[i,j].toMinutes() - matrizHoras[i,j].toMinutes();
 					}
 				}
 				if(horasTotales > 48*60){
@@ -264,7 +264,7 @@ namespace ClinicaFrba.Registro_Agenda
 			bool clinicaAbierta = false;
 			if(resultado){
                 int h = 1;
-				for(i=0;i<4;i=i+2){
+				for(i=0;i<2;i=i+1){
                     if (i == 2) { h = 3; }
 					for(j=0;j<6;j++){
 						if(matrizHoras[i,j] != null){ 
@@ -295,11 +295,11 @@ namespace ClinicaFrba.Registro_Agenda
 				                "Total de Horas incorrecto",
 				                MessageBoxButtons.OK,
 				                MessageBoxIcon.Error);
-			if(horaCruzada)
-				MessageBox.Show("La Hora Fin 1 no puede ser anterior a la Hora de Inicio 2.",
-				                "Horario Incorrecto",
-				                MessageBoxButtons.OK,
-				                MessageBoxIcon.Error);
+            //if(horaCruzada)
+            //    MessageBox.Show("La Hora Fin 1 no puede ser anterior a la Hora de Inicio 2.",
+            //                    "Horario Incorrecto",
+            //                    MessageBoxButtons.OK,
+            //                    MessageBoxIcon.Error);
 			if(errorTextBox)
 				MessageBox.Show("Tenga en cuenta que:" + Environment.NewLine +
 				                "si introdujo una Hora Inicio, tambien debe introducir una Hora Fin." + Environment.NewLine +
@@ -315,24 +315,24 @@ namespace ClinicaFrba.Registro_Agenda
 		
 		private bool textBoxCorrecta(int i, int j){
 			CustomHour hora1;
-			CustomHour hora2;
-			
-			if(matriz[i,j].Text != null && matriz[i, j].Text != string.Empty){
-				//Miro a ver si la hora inicio y hora fin son correctas
-				if( horaCorrecta(matriz[i,j], out hora1) && horaCorrecta(matriz[i+1,j], out hora2) ){
+            //CustomHour hora2;
+            horaCorrecta(matriz[i, j], out hora1);
+            if(matriz[i,j].Text != null && matriz[i, j].Text != string.Empty){
+            //    //Miro a ver si la hora inicio y hora fin son correctas
+            //    if( horaCorrecta(matriz[i,j], out hora1) && horaCorrecta(matriz[i+1,j], out hora2) ){
 
-					if(hora1.esAntes(hora2) && CustomHour.esMultiplo30(hora1,hora2)){
+            //        if(hora1.esAntes(hora2) && CustomHour.esMultiplo30(hora1,hora2)){
 						//Son correctas las asigno en matrizHoras
 						
 						matrizHoras[i,j] = hora1;
-						matrizHoras[i+1,j] = hora2;
+                        //matrizHoras[i+1,j] = hora2;
 						
 						return true;
-					}
+                    //}
 					
-					return false;
-				}
-			}else if(matriz[i+1,j].Text == null || matriz[i+1,j].Text == string.Empty)
+                    //return false;
+                //}
+			}else if(matriz[i,j].Text == null || matriz[i,j].Text == string.Empty)
 				return true;
 			
 			return false;
