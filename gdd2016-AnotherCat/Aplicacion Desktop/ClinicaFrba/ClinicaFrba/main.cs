@@ -54,7 +54,7 @@ namespace ClinicaFrba
                 botones[i].Click += dicFunciones[fun.Id];
                 i++;
             }
-          this.Size = new Size(this.Width, (tamanio*(cantbot+1))+150);
+          this.Size = new Size(this.Width, (tamanio*(cantbot+1))+250);
           load+= 1;
         }
 

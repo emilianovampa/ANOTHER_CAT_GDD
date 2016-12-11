@@ -105,6 +105,10 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void btnFiltrarAfiliados_Click(object sender, EventArgs e)
         {
+            if(txtDNI.Text == "" ){
+                MessageBox.Show("Complete el Campo DNI");
+
+            }else{
             List<Afiliado> afiladosFiltrados = null;
          
                 var parametros = new Dictionary<string, object>() {
@@ -123,6 +127,8 @@ namespace ClinicaFrba.Abm_Afiliado
                 
 
             LoadAfiliados(afiladosFiltrados);
+
+            }
         }
 
         private void dgvAfiliado_DoubleClick(object sender, EventArgs e)
