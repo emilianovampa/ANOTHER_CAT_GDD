@@ -106,34 +106,22 @@ namespace ClinicaFrba.Abm_Afiliado
         private void btnFiltrarAfiliados_Click(object sender, EventArgs e)
         {
             List<Afiliado> afiladosFiltrados = null;
-            //if (string.IsNullOrEmpty(txtDni.Text))
-            //{
+         
                 var parametros = new Dictionary<string, object>() {
-                    //{ "@nombre", txtNombre.Text},
-                    { "@apellido", txtApellido.Text},
-                    //{ "@mail", txtMailAfiliado.Text}
+                  
+                    { "@dni", Int32.Parse(txtDNI.Text)},
+            
                 };
                 try
                 {
-                    afiladosFiltrados = ConexionesDB.ExecuteReader("Afiliado_GetByFilters", parametros).ToAfiliado();
+                    afiladosFiltrados = ConexionesDB.ExecuteReader("Afiliado_GetByDni", parametros).ToAfiliado();
                 }
                 catch
                 {
                     MessageBox.Show("Hubo un error al acceder a la base de datos, intente nuevamente", "Intente nuevamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        afiladosFiltrados = ConexionesDB.ExecuteReader("Afiliado_GetByDni", new Dictionary<string, object> { { "@dni", txtDni.Text } }).ToAfiliado();
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Hubo un error al acceder a la base de datos, intente nuevamente", "Intente nuevamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    } 
-            //}
+
             LoadAfiliados(afiladosFiltrados);
         }
 
@@ -172,10 +160,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void btnBajaAfiliado_Click(object sender, EventArgs e)
         {
-           // Afiliado afil = ;
-            //frmBajaAfiliado baja = new frmBajaAfiliado(usuario, rol);
-            //baja.Show();
-            //Hide();
+  
             //ACORDARSE QUE CUANDO LE DOY DE BAJA, HAY QUE PONER SUS TURNOS COMO DISPONIBLES, ESO ES UN TRIGGER
             if (dgvAfiliado.SelectedRows.Count == 1)
             {
@@ -192,7 +177,7 @@ namespace ClinicaFrba.Abm_Afiliado
                     {
                         user = afil.Username;
                     }
-                    //int resp= 0;
+                    
                     
                     try
                     {
@@ -204,7 +189,7 @@ namespace ClinicaFrba.Abm_Afiliado
                         MessageBox.Show("Error al dar de baja afiliado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                  //  if(resp > 0)
+                  
                         MessageBox.Show("Se dio de baja al afiliado: " + afil.Username, "Baja", MessageBoxButtons.OK, MessageBoxIcon.Information); 
                  //   else
                   //      MessageBox.Show("No se dio de baja al afiliado: " + afil.Username + "porque no tenia ningun rol o porque ya estaba de baja", "Baja", MessageBoxButtons.OK, MessageBoxIcon.Warning);

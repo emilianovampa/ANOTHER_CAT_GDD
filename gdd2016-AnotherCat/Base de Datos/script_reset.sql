@@ -211,5 +211,6 @@ DROP FUNCTION ANOTHER_CAT.Obtener_Fecha
 DROP PROCEDURE ANOTHER_CAT.Obtener_Horas_Profesional
 DROP PROCEDURE ANOTHER_CAT.Borrar_Franjas_Agenda
 DROP PROCEDURE ANOTHER_CAT.Asignar_agendas
+drop proc ANOTHER_CAT.Get_Turnos_Prof_ReservadosTodos
 DROP SCHEMA ANOTHER_CAT
 GO

@@ -583,7 +583,7 @@ insert into ANOTHER_CAT.bono_consulta (bono_id, bono_afiliado, bono_plan, bono_f
 select distinct (Bono_Consulta_Numero), afiliado_nro, Plan_Med_Codigo, Compra_Bono_Fecha, 'S'
 	from gd_esquema.Maestra, ANOTHER_CAT.afiliado
 	where Bono_Consulta_Numero is not null and Compra_Bono_Fecha is not null and afiliado_dni = Paciente_Dni
-	order by Bono_Consulta_Numero, Paciente_Dni, Plan_Med_Codigo, Compra_Bono_Fecha
+	order by Bono_Consulta_Numero
 go
 
 set nocount on;
@@ -986,7 +986,7 @@ GO
 	set nocount on;
 	insert into modificacion_plan (modif_afiliado, modif_plan_viejo, modif_motivo, modif_plan_fecha, modif_plan_nuevo)
 	values((select afiliado_nro from afiliado where usuario_id = @Username),
-	(select afiliado_plan from afiliado where usuario_id = @Username), @Motivo, ANOTHER_CAT.Obtener_Fecha(), @PlanNuevoId)
+	(select afiliado_plan from afiliado where usuario_id = @Username), @Motivo, (select ANOTHER_CAT.Obtener_Fecha() ), @PlanNuevoId)
 	end
   go
 
@@ -1196,7 +1196,7 @@ create procedure ANOTHER_CAT.Get_Especialidades_Sin_Agenda(@matricula int)
 		FROM ANOTHER_CAT.especialidad e, ANOTHER_CAT.tipo_especialidad et, ANOTHER_CAT.medicoXespecialidad mxe
 		WHERE mxe.medxesp_profesional = @matricula AND e.especialidad_codigo = mxe.medxesp_especialidad
 			AND et.tipo_especialidad_codigo = e.especialidad_tipo AND ((mxe.medxesp_agenda is null) or 
-			exists((select a.agenda_id from ANOTHER_CAT.agenda a, ANOTHER_CAT.Fecha_Config f
+			exists((select a.agenda_id from ANOTHER_CAT.agenda a, [ANOTHER_CAT].[Fecha_Config] f
 			where mxe.medxesp_agenda = a.agenda_id
 			AND a.agenda_fecha_fin < f.fecha)))
 	end
@@ -1373,7 +1373,7 @@ create procedure ANOTHER_CAT.Get_Especialidades_Sin_Agenda(@matricula int)
   create procedure ANOTHER_CAT.Get_Turnos_Today
   as
 	begin
-		select * from ANOTHER_CAT.turno where turno_fecha = CONVERT(DATE, ANOTHER_CAT.Obtener_Fecha());
+		select * from ANOTHER_CAT.turno where turno_fecha = CONVERT(DATE, (select ANOTHER_CAT.Obtener_Fecha() ));
 	end
   go
     
@@ -1400,7 +1400,7 @@ create procedure ANOTHER_CAT.Get_Especialidades_Sin_Agenda(@matricula int)
 		   str(month(turno_fecha)) as mes,
 		   CONVERT(nvarchar(MAX), turno_fecha, 8) as hora
 	FROM ANOTHER_CAT.turno
-	 WHERE turno_fecha >= CONVERT(date,ANOTHER_CAT.Obtener_Fecha()) /* fecha_archivo */
+	 WHERE turno_fecha >= CONVERT(date,(select ANOTHER_CAT.Obtener_Fecha() )) /* fecha_archivo */
 	  and afiliado_nro is null 
 	  and turno_estado = 'D' 
 	  and turno_medico_especialidad_id = (select top 1 medxesp_id from ANOTHER_CAT.medicoXespecialidad where medxesp_profesional = @profesional and medxesp_especialidad = @especialidad)
@@ -1671,7 +1671,7 @@ GO
 	begin 
 		select Convert(date, turno_fecha) as turno_fecha from ANOTHER_CAT.turno, ANOTHER_CAT.medicoXespecialidad
 		where turno_medico_especialidad_id = medxesp_id and medxesp_profesional = @matricula
-			and (turno_estado = 'D' or turno_estado = 'R') and turno_fecha >= Convert(date, ANOTHER_CAT.Obtener_Fecha()+1)
+			and (turno_estado = 'D' or turno_estado = 'R') and turno_fecha >= Convert(date, (select ANOTHER_CAT.Obtener_Fecha() )+1)
 		group by Convert(date, turno_fecha)
 		order by Convert(date, turno_fecha)
 	end
@@ -1696,7 +1696,7 @@ GO
 		where YEAR(turno_fecha) = YEAR(@fecha) and MONTH(turno_fecha)=MONTH(@fecha) and DAY(turno_fecha)=DAY(@fecha)
 			and turno_estado <> 'U' and turno_medico_especialidad_id = (select medicoXespecialidad.medxesp_id from ANOTHER_CAT.medicoXespecialidad where medxesp_profesional = @matricula)
 	insert into ANOTHER_CAT.cancelacion_turno (cancel_fecha, cancel_motivo, cancel_profesional, cancel_tipo, cancel_turno)
-		values(ANOTHER_CAT.Obtener_Fecha(), @motivo +' : Fue una cancelacion por dia', @matricula, @tipo, null)
+		values((select ANOTHER_CAT.Obtener_Fecha() ), @motivo +' : Fue una cancelacion por dia', @matricula, @tipo, null)
 
 	end
  go
@@ -1716,14 +1716,14 @@ create procedure ANOTHER_CAT.Cancelar_Turnos_ProfxFranja(@motivo varchar(255), @
 			set @turno = isnull(( select top 1 turno_nro from ANOTHER_CAT.turno, ANOTHER_CAT.medicoXespecialidad
 				where turno_medico_especialidad_id = medxesp_id and medxesp_profesional = @matricula
 					and day(turno_fecha) = day(@fecha) and month(turno_fecha) = month(@fecha) and year(turno_fecha) = year(@fecha)
-					and Convert(date, turno_fecha) > Convert(date, ANOTHER_CAT.Obtener_Fecha())
+					and Convert(date, turno_fecha) > Convert(date, (select ANOTHER_CAT.Obtener_Fecha() ))
 					and	DATEPART( hour, Convert(time, turno_fecha)) = @hora and	DATEPART( minute, Convert(time, turno_fecha)) = @minuto), -1)
 			
 			if(@turno <> -1)
 			Begin
 				update ANOTHER_CAT.turno set turno_estado = 'C', afiliado_nro = null where turno_nro = @turno and turno_estado <> 'U'
 				insert into ANOTHER_CAT.cancelacion_turno (cancel_fecha, cancel_motivo, cancel_profesional, cancel_tipo, cancel_turno)
-					values(ANOTHER_CAT.Obtener_Fecha(), @motivo+' :Fue una cancelacion por franja', @matricula, @tipo, @turno)
+					values((select ANOTHER_CAT.Obtener_Fecha() ), @motivo+' :Fue una cancelacion por franja', @matricula, @tipo, @turno)
 			End
 
 			if @minuto = 0
@@ -1797,6 +1797,8 @@ create procedure ANOTHER_CAT.Cancelar_Turnos_Varios_Dias(@motivo varchar(255), @
 	RETURN DATEADD(minute, DATEDIFF(minute,@now_viejo,GETDATE()), @fecha_tabla )
 	
 END
+
+
 GO
 SET NOCOUNT ON;
 /*EXECUTE ANOTHER_CAT.Agregar_Franja_A_Todos_Los_Medicos

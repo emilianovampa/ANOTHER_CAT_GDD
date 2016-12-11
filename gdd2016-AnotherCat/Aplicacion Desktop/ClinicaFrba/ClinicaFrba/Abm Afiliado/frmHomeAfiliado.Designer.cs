@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHomeAfiliado));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnHistorialCambiosPlan = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnBajaAfiliado = new System.Windows.Forms.Button();
             this.btnFiltrarAfiliados = new System.Windows.Forms.Button();
             this.btnAlta = new System.Windows.Forms.Button();
             this.dgvAfiliado = new System.Windows.Forms.DataGridView();
-            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.txtDNI = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAfiliado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAfiliado)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -53,7 +53,7 @@
             this.groupBox1.Controls.Add(this.btnFiltrarAfiliados);
             this.groupBox1.Controls.Add(this.btnAlta);
             this.groupBox1.Controls.Add(this.dgvAfiliado);
-            this.groupBox1.Controls.Add(this.txtApellido);
+            this.groupBox1.Controls.Add(this.txtDNI);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(10, 11);
             this.groupBox1.Name = "groupBox1";
@@ -63,10 +63,20 @@
             this.groupBox1.Text = "Afiliado";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(286, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 80);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnHistorialCambiosPlan
             // 
             this.btnHistorialCambiosPlan.Location = new System.Drawing.Point(21, 78);
-            this.btnHistorialCambiosPlan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHistorialCambiosPlan.Margin = new System.Windows.Forms.Padding(2);
             this.btnHistorialCambiosPlan.Name = "btnHistorialCambiosPlan";
             this.btnHistorialCambiosPlan.Size = new System.Drawing.Size(101, 23);
             this.btnHistorialCambiosPlan.TabIndex = 17;
@@ -125,31 +135,21 @@
             this.dgvAfiliado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAfiliado_CellContentClick);
             this.dgvAfiliado.DoubleClick += new System.EventHandler(this.dgvAfiliado_DoubleClick);
             // 
-            // txtApellido
+            // txtDNI
             // 
-            this.txtApellido.Location = new System.Drawing.Point(139, 66);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(100, 20);
-            this.txtApellido.TabIndex = 3;
+            this.txtDNI.Location = new System.Drawing.Point(139, 66);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(100, 20);
+            this.txtDNI.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(138, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Apellido";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(286, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
+            this.label2.Text = "DNI";
             // 
             // frmHomeAfiliado
             // 
@@ -157,15 +157,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 336);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmHomeAfiliado";
             this.Text = "Home Afiliado";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmHomeAfiliado_FormClosed);
             this.Load += new System.EventHandler(this.frmHomeAfiliado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAfiliado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAfiliado)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,7 +175,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnFiltrarAfiliados;
         private System.Windows.Forms.DataGridView dgvAfiliado;
-        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAlta;
         private System.Windows.Forms.Button btnBajaAfiliado;

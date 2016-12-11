@@ -84,6 +84,30 @@
     <Compile Include="Abm Profesional\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet.cs">
+      <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet1.cs">
+      <DependentUpon>GD2C2016DataSet1.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet3.cs">
+      <DependentUpon>GD2C2016DataSet3.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet4.cs">
+      <DependentUpon>GD2C2016DataSet4.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet5.cs">
+      <DependentUpon>GD2C2016DataSet5.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Abm Profesional\GD2C2016DataSet6.cs">
+      <DependentUpon>GD2C2016DataSet6.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Abm Usuario\homeAbmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>

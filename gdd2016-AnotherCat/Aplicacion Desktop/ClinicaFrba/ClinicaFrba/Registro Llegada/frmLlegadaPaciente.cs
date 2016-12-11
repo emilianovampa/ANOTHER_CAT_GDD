@@ -49,7 +49,7 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void dgvMedicoXEspecialidad_DoubleClick(object sender, EventArgs e)
         {
-            //CON ESTE MEDICO X ESP ID HAY QUE TRAER LOS TURNOS QUE TIENE EL AFILIADO QUE VOY A SELECCIONAR DESPUES
+            //CON ESTE MEDICO X ESP ID HAY QUE   LOS TURNOS QUE TIENE EL AFILIADO QUE VOY A SELECCIONAR DESPUES
             if (dgvMedicoXEspecialidad.SelectedRows.Count == 1)
             {
                 if (dateTimePicker1.Value >= ConfigTime.getFechaSinHora())

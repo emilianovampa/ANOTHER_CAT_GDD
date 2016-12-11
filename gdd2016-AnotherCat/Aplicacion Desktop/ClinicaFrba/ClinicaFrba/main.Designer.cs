@@ -244,7 +244,7 @@
             // 
             // Main
             // 
-            this.ClientSize = new System.Drawing.Size(360, 404);
+            this.ClientSize = new System.Drawing.Size(360, 641);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
