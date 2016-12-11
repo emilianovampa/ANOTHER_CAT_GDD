@@ -138,6 +138,9 @@
     <Compile Include="AbmRol\frmModificar.Designer.cs">
       <DependentUpon>frmModificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Afiliado.cs" />
+    <Compile Include="Agenda.cs" />
+    <Compile Include="Bono.cs" />
     <Compile Include="Cancelar Atencion\CancelarAtencionAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +189,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GD2C2016DataSet6.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ConexionesDB.cs" />
+    <Compile Include="ConfigTime.cs" />
+    <Compile Include="ConversionesAObjetos.cs" />
+    <Compile Include="Especialidad.cs" />
+    <Compile Include="Fecha.cs" />
+    <Compile Include="Franja.cs" />
+    <Compile Include="Funcion.cs" />
+    <Compile Include="Listado_1.cs" />
+    <Compile Include="Listado_2.cs" />
+    <Compile Include="Listado_3.cs" />
+    <Compile Include="Listado_4.cs" />
+    <Compile Include="Listado_5.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +219,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModifPlan.cs" />
     <Compile Include="Pedir Turno\frmPedidoTurno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +232,8 @@
     <Compile Include="Pedir Turno\frmTurnosxProf.Designer.cs">
       <DependentUpon>frmTurnosxProf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Plan.cs" />
+    <Compile Include="Profesional.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro Agenda\CustomHour.cs" />
@@ -237,6 +255,10 @@
     <Compile Include="Registro Resultado\RegistroResultado.Designer.cs">
       <DependentUpon>RegistroResultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rol.cs" />
+    <Compile Include="Turno.cs" />
+    <Compile Include="turnosProcedure.cs" />
+    <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="Abm Afiliado\frmAfiliado.resx">
       <DependentUpon>frmAfiliado.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,16 +403,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Clases\Clases.csproj">
-      <Project>{6dc12838-6697-4cb1-a808-8b2f091ca3e4}</Project>
-      <Name>Clases</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helpers\BaseDatos.csproj">
-      <Project>{7e6c5163-9514-4af8-b63b-8d4343f8f0c0}</Project>
-      <Name>BaseDatos</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
