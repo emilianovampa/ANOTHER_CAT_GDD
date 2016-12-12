@@ -51,7 +51,7 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 63);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -73,7 +73,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(274, 38);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 20);
             this.button1.TabIndex = 2;
@@ -85,17 +85,18 @@
             // 
             this.ckbHorario.AutoSize = true;
             this.ckbHorario.Location = new System.Drawing.Point(391, 11);
-            this.ckbHorario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ckbHorario.Margin = new System.Windows.Forms.Padding(2);
             this.ckbHorario.Name = "ckbHorario";
             this.ckbHorario.Size = new System.Drawing.Size(76, 17);
             this.ckbHorario.TabIndex = 5;
             this.ckbHorario.Text = "En Horario";
             this.ckbHorario.UseVisualStyleBackColor = true;
+            this.ckbHorario.CheckedChanged += new System.EventHandler(this.ckbHorario_CheckedChanged);
             // 
             // txtSintomas
             // 
             this.txtSintomas.Location = new System.Drawing.Point(391, 63);
-            this.txtSintomas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSintomas.Margin = new System.Windows.Forms.Padding(2);
             this.txtSintomas.Multiline = true;
             this.txtSintomas.Name = "txtSintomas";
             this.txtSintomas.Size = new System.Drawing.Size(168, 46);
@@ -104,7 +105,7 @@
             // txtDiagnostico
             // 
             this.txtDiagnostico.Location = new System.Drawing.Point(391, 136);
-            this.txtDiagnostico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiagnostico.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiagnostico.Multiline = true;
             this.txtDiagnostico.Name = "txtDiagnostico";
             this.txtDiagnostico.Size = new System.Drawing.Size(168, 45);
@@ -133,7 +134,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(391, 201);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 30);
             this.button2.TabIndex = 11;
@@ -144,7 +145,7 @@
             // dtpFechaTurno
             // 
             this.dtpFechaTurno.Location = new System.Drawing.Point(154, 11);
-            this.dtpFechaTurno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaTurno.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaTurno.Name = "dtpFechaTurno";
             this.dtpFechaTurno.Size = new System.Drawing.Size(212, 20);
             this.dtpFechaTurno.TabIndex = 12;
@@ -165,7 +166,7 @@
             this.cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecialidad.FormattingEnabled = true;
             this.cmbEspecialidad.Location = new System.Drawing.Point(154, 38);
-            this.cmbEspecialidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEspecialidad.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEspecialidad.Name = "cmbEspecialidad";
             this.cmbEspecialidad.Size = new System.Drawing.Size(116, 21);
             this.cmbEspecialidad.TabIndex = 14;
@@ -187,7 +188,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmRegistroResultado";
             this.Text = "Registrar Resultado Consulta";
             this.Load += new System.EventHandler(this.frmRegistroResultado_Load);

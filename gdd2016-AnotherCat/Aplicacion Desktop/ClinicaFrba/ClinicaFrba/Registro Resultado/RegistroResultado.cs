@@ -22,6 +22,11 @@ namespace ClinicaFrba.Registro_Resultado
             InitializeComponent();
             dtpFechaTurno.Value = ConfigTime.getFechaSinHora();
             profesional = pro;
+
+            label4.Visible = false;
+            txtSintomas.Visible = false;
+            label3.Visible = false;
+            txtDiagnostico.Visible = false;
         }
 
         private void frmRegistroResultado_Load(object sender, EventArgs e)
@@ -135,6 +140,14 @@ namespace ClinicaFrba.Registro_Resultado
                 aabrir.Show();
             }
 
+        }
+
+        private void ckbHorario_CheckedChanged(object sender, EventArgs e)
+        {
+            label4.Visible = true;
+            txtSintomas.Visible = true;
+            label3.Visible = true;
+            txtDiagnostico.Visible = true;
         }
     }
 }
