@@ -106,7 +106,9 @@ namespace ClinicaFrba.Abm_Afiliado
         private void btnFiltrarAfiliados_Click(object sender, EventArgs e)
         {
             if(txtDNI.Text == "" ){
-                MessageBox.Show("Complete el Campo DNI");
+
+                LoadAfiliados(ConexionesDB.ExecuteReader("Afiliado_GetAll").ToAfiliado());
+                
 
             }else{
             List<Afiliado> afiladosFiltrados = null;

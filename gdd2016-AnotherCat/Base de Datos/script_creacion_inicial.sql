@@ -1019,7 +1019,10 @@ GO
   AS
 	BEGIN
 	SET NOCOUNT ON;
-		SELECT * FROM ANOTHER_CAT.afiliado ORDER BY afiliado_nombre, afiliado_apellido, afiliado_dni
+		SELECT * FROM ANOTHER_CAT.afiliado 
+		where [afiliado_nro] not in ( SELECT [baja_afiliado_nro] FROM [GD2C2016].[ANOTHER_CAT].[baja_afiliado])
+		ORDER BY afiliado_nombre, afiliado_apellido, afiliado_dni
+		
 	END
   GO
 

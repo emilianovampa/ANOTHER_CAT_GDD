@@ -24,6 +24,7 @@ namespace ClinicaFrba.Registro_Llegada
 
             InitializeComponent();
             dateTimePicker1.Value = ConfigTime.getFechaSinHora();
+            
         }
 
         private void frmLlegadaPaciente_Load(object sender, EventArgs e)
@@ -56,11 +57,6 @@ namespace ClinicaFrba.Registro_Llegada
                 {
                     DataGridViewRow row = dgvMedicoXEspecialidad.SelectedRows[0];
                     medxespid = row.Cells[0].Value.ToString();
-                    dgvMedicoXEspecialidad.Enabled = false;
-                    cmbEspecialidades.Enabled = false;
-                    textBox1.Enabled = false;
-                    dateTimePicker1.Enabled = false;
-                    btnFiltrar.Enabled = false;
                     fecha = dateTimePicker1.Value;
                     this.Width = 1030;
 

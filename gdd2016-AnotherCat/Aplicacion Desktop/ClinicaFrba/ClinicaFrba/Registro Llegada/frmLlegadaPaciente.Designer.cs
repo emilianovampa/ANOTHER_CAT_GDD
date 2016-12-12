@@ -56,9 +56,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicoXEspecialidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getMedicoXEspAllBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2016DataSet5)).BeginInit();
@@ -83,7 +83,7 @@
             this.especialidaddescripcionDataGridViewTextBoxColumn});
             this.dgvMedicoXEspecialidad.DataSource = this.getMedicoXEspAllBindingSource2;
             this.dgvMedicoXEspecialidad.Location = new System.Drawing.Point(9, 88);
-            this.dgvMedicoXEspecialidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvMedicoXEspecialidad.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMedicoXEspecialidad.Name = "dgvMedicoXEspecialidad";
             this.dgvMedicoXEspecialidad.ReadOnly = true;
             this.dgvMedicoXEspecialidad.RowTemplate.Height = 24;
@@ -147,7 +147,7 @@
             this.cmbEspecialidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecialidades.FormattingEnabled = true;
             this.cmbEspecialidades.Location = new System.Drawing.Point(145, 10);
-            this.cmbEspecialidades.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEspecialidades.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEspecialidades.Name = "cmbEspecialidades";
             this.cmbEspecialidades.Size = new System.Drawing.Size(196, 21);
             this.cmbEspecialidades.TabIndex = 1;
@@ -166,7 +166,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.Location = new System.Drawing.Point(344, 34);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(175, 20);
             this.btnFiltrar.TabIndex = 2;
@@ -194,7 +194,7 @@
             this.dgvTurnos.AllowUserToDeleteRows = false;
             this.dgvTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTurnos.Location = new System.Drawing.Point(524, 88);
-            this.dgvTurnos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvTurnos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTurnos.Name = "dgvTurnos";
             this.dgvTurnos.ReadOnly = true;
             this.dgvTurnos.RowTemplate.Height = 24;
@@ -234,7 +234,7 @@
             // txtNroAfiliado
             // 
             this.txtNroAfiliado.Location = new System.Drawing.Point(600, 62);
-            this.txtNroAfiliado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNroAfiliado.Margin = new System.Windows.Forms.Padding(2);
             this.txtNroAfiliado.Name = "txtNroAfiliado";
             this.txtNroAfiliado.Size = new System.Drawing.Size(158, 20);
             this.txtNroAfiliado.TabIndex = 7;
@@ -267,19 +267,11 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(145, 35);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(196, 20);
             this.textBox1.TabIndex = 10;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(145, 58);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(196, 20);
-            this.dateTimePicker1.TabIndex = 11;
             // 
             // label5
             // 
@@ -301,14 +293,21 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Hacer Doble Click para seleccionar medico";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(145, 61);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(196, 20);
+            this.dateTimePicker1.TabIndex = 32;
+            // 
             // frmLlegadaPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 439);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -319,7 +318,7 @@
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.cmbEspecialidades);
             this.Controls.Add(this.dgvMedicoXEspecialidad);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLlegadaPaciente";
             this.Text = "Registro Llegada Paciente";
             this.Load += new System.EventHandler(this.frmLlegadaPaciente_Load);
@@ -368,8 +367,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
