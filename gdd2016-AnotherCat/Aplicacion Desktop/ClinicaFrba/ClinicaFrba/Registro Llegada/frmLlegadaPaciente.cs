@@ -24,6 +24,8 @@ namespace ClinicaFrba.Registro_Llegada
 
             InitializeComponent();
             dateTimePicker1.Value = ConfigTime.getFechaSinHora();
+      
+    
             
         }
 

@@ -1020,7 +1020,7 @@ GO
 	BEGIN
 	SET NOCOUNT ON;
 		SELECT * FROM ANOTHER_CAT.afiliado 
-		where [afiliado_nro] not in ( SELECT [baja_afiliado_nro] FROM [GD2C2016].[ANOTHER_CAT].[baja_afiliado])
+		--where [afiliado_nro] not in ( SELECT [baja_afiliado_nro] FROM [GD2C2016].[ANOTHER_CAT].[baja_afiliado])
 		ORDER BY afiliado_nombre, afiliado_apellido, afiliado_dni
 		
 	END
@@ -1211,7 +1211,7 @@ create procedure ANOTHER_CAT.Get_Especialidades_Sin_Agenda(@matricula int)
   values (10018, 290)
   go
 
-  
+ -- drop procedure ANOTHER_CAT.Afiliado_Baja_Logica
   /*DAR DE BAJA LOGICA UN AFILIADO (ACORDARSE QUE CUANDO SE HACE ESTO TAMBIEN TENGO QUE PONER TODOS LOS TURNOS DEL AFILIADO COMO DISPONIBLES)*/
   create procedure ANOTHER_CAT.Afiliado_Baja_Logica(@UsuarioId varchar(50))
   as
@@ -1221,7 +1221,7 @@ create procedure ANOTHER_CAT.Get_Especialidades_Sin_Agenda(@matricula int)
 		--set @ret = (select count(*) from ANOTHER_CAT.rolXusuario where usuario_id = @UsuarioId and rol_id = 2 and rolXusuario_habilitado = 0) 
 		--LE DOY DE BAJA A SUS TURNOS Y LOS PONGO COMO DISPONIBLES
 		update ANOTHER_CAT.turno set turno_estado = 'D', afiliado_nro = null where (select top 1 usuario_id from afiliado where afiliado_nro = turno.afiliado_nro) = @UsuarioId
-		insert into ANOTHER_CAT.baja_afiliado (baja_afiliado_nro, baja_afiliado_fecha) (select top 1 afiliado_nro, GETDATE() from afiliado where usuario_id = @UsuarioId)
+		insert into ANOTHER_CAT.baja_afiliado (baja_afiliado_nro, baja_afiliado_fecha) (select top 1 afiliado_nro, (select ANOTHER_CAT.Obtener_Fecha()) from afiliado where usuario_id = @UsuarioId)
 	end
   go
 
